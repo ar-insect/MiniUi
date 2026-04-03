@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/widgets.dart';
 import 'package:miniui/components/text/mini_text.dart';
 import 'package:miniui/core/base/base_component.dart';
@@ -29,38 +31,64 @@ class MiniTabBar extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
+    final bool isGlass = theme.name == 'glass';
 
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: theme.spacing.lg,
-        vertical: theme.spacing.sm,
-      ),
-      decoration: BoxDecoration(
-        color: theme.colors.background,
-        border: Border(
-          top: isBottom
-              ? BorderSide(
-                  color: theme.colors.foreground.withOpacity(0.06),
-                )
-              : BorderSide.none,
-          bottom: !isBottom
-              ? BorderSide(
-                  color: theme.colors.foreground.withOpacity(0.06),
-                )
-              : BorderSide.none,
+    final Widget row = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        for (int i = 0; i < items.length; i++)
+          _buildItem(
+            context,
+            theme,
+            items[i],
+            i,
+          ),
+      ],
+    );
+
+    final EdgeInsetsGeometry padding = EdgeInsets.symmetric(
+      horizontal: theme.spacing.lg,
+      vertical: theme.spacing.sm,
+    );
+
+    final Border border = Border(
+      top: isBottom
+          ? BorderSide(
+              color: theme.colors.foreground.withOpacity(0.06),
+            )
+          : BorderSide.none,
+      bottom: !isBottom
+          ? BorderSide(
+              color: theme.colors.foreground.withOpacity(0.06),
+            )
+          : BorderSide.none,
+    );
+
+    if (!isGlass) {
+      return Container(
+        padding: padding,
+        decoration: BoxDecoration(
+          color: theme.colors.background,
+          border: border,
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          for (int i = 0; i < items.length; i++)
-            _buildItem(
-              context,
-              theme,
-              items[i],
-              i,
-            ),
-        ],
+        child: row,
+      );
+    }
+
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: 20,
+          sigmaY: 20,
+        ),
+        child: Container(
+          padding: padding,
+          decoration: BoxDecoration(
+            color: theme.colors.background.withOpacity(0.7),
+            border: border,
+          ),
+          child: row,
+        ),
       ),
     );
   }

@@ -81,34 +81,34 @@ class MiniTheme {
 class MiniThemes {
   static const MiniSpacingTokens defaultSpacing = MiniSpacingTokens(
     xs: 4,
-    sm: 8,
-    md: 12,
-    lg: 16,
-    xl: 24,
+    sm: 10,
+    md: 14,
+    lg: 20,
+    xl: 28,
   );
 
   static const MiniRadiusTokens defaultRadius = MiniRadiusTokens(
     small: BorderRadius.all(Radius.circular(4)),
-    medium: BorderRadius.all(Radius.circular(8)),
+    medium: BorderRadius.all(Radius.circular(10)),
     large: BorderRadius.all(Radius.circular(16)),
     pill: BorderRadius.all(Radius.circular(999)),
   );
 
   static const MiniTypographyTokens defaultTypography = MiniTypographyTokens(
     body: TextStyle(
-      fontSize: 14,
+      fontSize: 15,
       fontWeight: FontWeight.w400,
     ),
     small: TextStyle(
-      fontSize: 12,
+      fontSize: 13,
       fontWeight: FontWeight.w400,
     ),
     title: TextStyle(
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w600,
     ),
     heading: TextStyle(
-      fontSize: 24,
+      fontSize: 26,
       fontWeight: FontWeight.w700,
     ),
   );
@@ -188,12 +188,27 @@ class MiniThemes {
     typography: defaultTypography,
   );
 
+  static final MiniTheme glass = MiniTheme(
+    name: 'glass',
+    brightness: Brightness.light,
+    colors: const MiniColorTokens(
+      primary: Color(0xFF0A84FF),
+      background: Color(0xFFF2F2F7),
+      foreground: Color(0xFF1C1C1E),
+      accent: Color(0xFF64D2FF),
+      danger: Color(0xFFFF3B30),
+    ),
+    spacing: defaultSpacing,
+    radius: defaultRadius,
+    typography: defaultTypography,
+  );
+
   static final List<MiniTheme> all = <MiniTheme>[
     light,
     dark,
     blue,
     red,
     festival,
+    glass,
   ];
 }
-

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
@@ -16,29 +18,50 @@ class MiniCard extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
+    final bool isGlass = theme.name == 'glass';
+
+    final Widget content = Padding(
+      padding: padding == EdgeInsets.zero
+          ? EdgeInsets.all(theme.spacing.md)
+          : padding,
+      child: child,
+    );
+
+    if (!isGlass) {
+      return Padding(
+        padding: margin,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: theme.colors.background,
+            borderRadius: theme.radius.medium,
+            border: Border.all(
+              color: theme.colors.foreground.withOpacity(0.08),
+            ),
+          ),
+          child: content,
+        ),
+      );
+    }
 
     return Padding(
       padding: margin,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: theme.colors.background,
-          borderRadius: theme.radius.medium,
-          border: Border.all(
-            color: theme.colors.foreground.withOpacity(0.06),
+      child: ClipRRect(
+        borderRadius: theme.radius.medium,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaX: 20,
+            sigmaY: 20,
           ),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: theme.colors.foreground.withOpacity(0.04),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: theme.colors.background.withOpacity(0.5),
+              borderRadius: theme.radius.medium,
+              border: Border.all(
+                color: theme.colors.foreground.withOpacity(0.06),
+              ),
             ),
-          ],
-        ),
-        child: Padding(
-          padding: padding == EdgeInsets.zero
-              ? EdgeInsets.all(theme.spacing.md)
-              : padding,
-          child: child,
+            child: content,
+          ),
         ),
       ),
     );
