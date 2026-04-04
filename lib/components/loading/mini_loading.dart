@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 import 'package:miniui/core/painters/loading_painter.dart';
 
+/// 旋转圆环样式的 Loading 组件，使用自定义画笔绘制。
 class MiniLoading extends StatefulWidget {
   final double size;
 

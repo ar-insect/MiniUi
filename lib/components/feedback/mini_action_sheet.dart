@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/miniui.dart';
 
+/// 操作表单项配置，描述每一行行为及是否为破坏性操作。
 class MiniActionSheetAction {
   final String label;
   final VoidCallback? onPressed;
@@ -13,6 +14,7 @@ class MiniActionSheetAction {
   });
 }
 
+/// 底部弹出的操作列表组件，常用于展示一组操作选项和取消按钮。
 class MiniActionSheet extends BaseComponent {
   final String? title;
   final List<MiniActionSheetAction> actions;
@@ -25,6 +27,7 @@ class MiniActionSheet extends BaseComponent {
     this.cancelLabel = '取消',
   });
 
+  /// 以路由的方式弹出一个操作列表。
   static Future<void> show(
     BuildContext context, {
     String? title,

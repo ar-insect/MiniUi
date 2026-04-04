@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 搜索框组件，内置圆角背景与占位提示，支持清空输入。
 class MiniSearchBar extends StatefulWidget {
   final String? initialValue;
   final ValueChanged<String>? onChanged;

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 列表项组件，支持前置图标、标题、副标题和右侧附加内容。
 class MiniListItem extends BaseComponent {
   final Widget? leading;
   final String title;

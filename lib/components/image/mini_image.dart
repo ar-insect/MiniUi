@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 带圆角裁剪的图片组件，封装常用尺寸与适配方式。
 class MiniImage extends BaseComponent {
   final ImageProvider image;
   final double? width;

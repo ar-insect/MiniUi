@@ -1,9 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/miniui.dart';
 
+/// 全屏 Loading 浮层，通过 Overlay 覆盖当前界面。
 class MiniLoadingOverlay extends BaseComponent {
   const MiniLoadingOverlay({super.key});
 
+  /// 显示全屏 Loading 并返回对应的 [OverlayEntry]，用于后续关闭。
   static OverlayEntry show(BuildContext context) {
     final OverlayState? overlay = Overlay.of(context);
     if (overlay == null) {
@@ -32,6 +34,7 @@ class MiniLoadingOverlay extends BaseComponent {
     return entry;
   }
 
+  /// 隐藏指定的 Loading 浮层。
   static void hide(OverlayEntry entry) {
     if (entry.mounted) {
       entry.remove();

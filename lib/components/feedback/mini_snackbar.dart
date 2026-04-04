@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/miniui.dart';
 
+/// 底部轻提示条组件，支持携带可选操作按钮。
 class MiniSnackbar extends BaseComponent {
   final String message;
   final String? actionLabel;
@@ -13,6 +14,7 @@ class MiniSnackbar extends BaseComponent {
     this.onAction,
   });
 
+  /// 通过 Overlay 显示一条 Snackbar，自动在指定时长后消失。
   static Future<void> show(
     BuildContext context,
     String message, {

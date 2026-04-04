@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 基础文本输入框组件，支持占位文案与不同键盘类型。
 class MiniInput extends StatefulWidget {
   final String? initialValue;
   final ValueChanged<String>? onChanged;

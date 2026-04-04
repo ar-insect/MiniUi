@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 角标组件，可叠加在子组件右上角，支持数字徽标和小红点两种形式。
 class MiniBadge extends BaseComponent {
   final Widget? child;
   final String? value;

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:miniui/components/text/mini_text.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 底部/顶部导航项配置，包含文案和可选图标。
 class MiniTabItem {
   final String label;
   final Widget? icon;
@@ -14,6 +15,7 @@ class MiniTabItem {
   });
 }
 
+/// 标签栏组件，用于展示一组等分的导航项，可放在顶部或底部。
 class MiniTabBar extends BaseComponent {
   final List<MiniTabItem> items;
   final int currentIndex;

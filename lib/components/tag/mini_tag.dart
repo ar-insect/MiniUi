@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 标签组件，可展示状态文案，支持实心/描边与可关闭样式。
 class MiniTag extends BaseComponent {
   final String label;
   final EdgeInsetsGeometry padding;

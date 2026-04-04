@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/miniui.dart';
 
+/// 简单确认弹框组件，支持标题、正文、确认和可选的取消按钮。
 class MiniDialog extends BaseComponent {
   final String? title;
   final String message;
@@ -15,6 +16,8 @@ class MiniDialog extends BaseComponent {
     this.cancelLabel,
   });
 
+  /// 以路由的方式显示对话框，并返回用户点击结果：
+  /// `true` 表示确认，`false` 表示取消，`null` 表示点击遮罩关闭。
   static Future<bool?> show(
     BuildContext context, {
     String? title,

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 开关组件，用于在开/关两种状态之间切换，带动效与禁用态。
 class MiniSwitch extends BaseComponent {
   final bool value;
   final ValueChanged<bool>? onChanged;
