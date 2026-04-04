@@ -1,6 +1,6 @@
 # MiniUi
 
-一个基于 Flutter `widgets` 层的超轻量 UI 组件库 Demo，用于探索：
+一个基于 Flutter `widgets` 层的超轻量 UI 组件库，用于探索：
 
 - 完全不依赖 `material.dart`
 - 多主题（浅色 / 深色 / 蓝色 / 红色 / 节日…）统一管理
@@ -25,14 +25,68 @@
 - 纯组件化封装  
   - 基础展示：`MiniText / MiniCard / MiniImage / MiniTag / MiniEmpty / MiniLoading`  
   - 交互输入：`MiniButton / MiniInput`  
-  - 表单控件：`MiniCheckbox / MiniRadio / MiniSwitch`  
+  - 表单控件：`MiniCheckbox / MiniRadio / MiniSwitch / MiniStepper / MiniSearchBar`  
   - 列表骨架：`MiniDivider / MiniListItem`  
-  - 反馈：`MiniToast`（基于 `Overlay`，无 Scaffold 依赖）
+  - 导航与布局：`MiniAppBar / MiniTabBar / MiniPageScaffold`  
+  - 反馈：`MiniToast / MiniDialog / MiniActionSheet / MiniSnackbar / MiniLoadingOverlay`
 
 - Demo 页面  
   - 首页：主题切换 + 基础组件 + 表单示例 + 列表 & Toast 示例  
   - 列表页：全屏 `MiniListItem` 列表骨架  
   - Token 页：颜色 / 间距 / 圆角 / 字体 Token 可视化
+
+---
+
+## 快速上手
+
+### 依赖声明（假设已发布到 pub.dev）
+
+在你的宿主应用 `pubspec.yaml` 中添加：
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+
+  miniui: ^1.0.0
+```
+
+### 最小使用示例（不依赖 `material.dart`）
+
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:miniui/miniui.dart';
+
+void main() {
+  final controller = MiniThemeController();
+
+  runApp(
+    Directionality(
+      textDirection: TextDirection.ltr,
+      child: MiniThemeProvider(
+        theme: controller.theme,
+        child: WidgetsApp(
+          color: controller.theme.colors.background,
+          builder: (context, _) => Center(
+            child: MiniButton(
+              label: 'Hello MiniUi',
+              onPressed: () {},
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+```
+
+上面这段代码完成了：
+
+- 使用 `MiniThemeController` 管理当前主题；
+- 通过 `MiniThemeProvider` 注入主题；
+- 使用 `MiniButton` 渲染一个按钮。
+
+更完整的用法可以参考下文「在其他项目中作为 SDK 使用」一节，以及 `example/` 目录中的示例应用。
 
 ---
 
@@ -49,23 +103,40 @@ lib/
       tokens.dart           # MiniTheme + Color/Spacing/Radius/Typography Tokens
 
   components/
-    button/   mini_button.dart
-    card/     mini_card.dart
-    empty/    mini_empty.dart
-    image/    mini_image.dart
-    input/    mini_input.dart
-    loading/  mini_loading.dart
-    tag/      mini_tag.dart
-    text/     mini_text.dart
+    button/      mini_button.dart
+    card/        mini_card.dart
+    empty/       mini_empty.dart
+    image/       mini_image.dart
+    input/       mini_input.dart
+    loading/     mini_loading.dart
+    tag/         mini_tag.dart
+    text/        mini_text.dart
     form/
       mini_checkbox.dart
       mini_radio.dart
       mini_switch.dart
+      mini_stepper.dart
+      mini_search_bar.dart
     list/
       mini_divider.dart
       mini_list_item.dart
+    data/
+      mini_avatar.dart
+      mini_badge.dart
+      mini_skeleton.dart
     feedback/
       mini_toast.dart
+      mini_dialog.dart
+      mini_action_sheet.dart
+      mini_snackbar.dart
+      mini_loading_overlay.dart
+    nav/
+      mini_app_bar.dart
+      mini_tab_bar.dart
+    layout/
+      mini_page_scaffold.dart
+    selection/
+      mini_segmented_control.dart
 
   miniui.dart         # 对外统一导出入口（模拟 SDK 用法）
 
@@ -170,13 +241,29 @@ import 'package:miniui/miniui.dart';
   - `MiniCheckbox`
   - `MiniRadio<T>`
   - `MiniSwitch`
+  - `MiniStepper`
+  - `MiniSearchBar`
 
 - 列表
   - `MiniDivider`
   - `MiniListItem`
 
+- 数据展示
+  - `MiniAvatar`
+  - `MiniBadge`
+  - `MiniSkeleton`
+
+- 导航与布局
+  - `MiniAppBar`
+  - `MiniTabBar`
+  - `MiniPageScaffold`
+
 - 反馈
   - `MiniToast.show(context, message)`
+  - `MiniDialog`
+  - `MiniActionSheet`
+  - `MiniSnackbar`
+  - `MiniLoadingOverlay`
 
 ---
 
@@ -270,6 +357,24 @@ flutter run -t example/lib/main.dart -d android
 - Flutter 已启用 Web 时，需执行过：`flutter config --enable-web`
 
 ---
+
+## 测试
+
+本仓库内置了一些最小化的测试示例，覆盖组件渲染与主题 Token 一致性：
+
+- 组件测试：`test/mini_button_test.dart`  
+  - 验证 `MiniButton` 能正确渲染文案并响应点击。
+- 主题 Token 测试：`test/mini_theme_tokens_test.dart`  
+  - 验证 `MiniThemes.light` 的间距从 `xs` 到 `xl` 递增。  
+  - 验证 `MiniThemes.light` 与 `MiniThemes.dark` 的亮度配置不同。
+
+在项目根目录执行：
+
+```bash
+flutter test
+```
+
+即可运行全部测试用例。
 
 ## 在其他项目中作为 SDK 使用（示例）
 
