@@ -1,12 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// Mini 按钮的样式枚举，包含主按钮、幽灵按钮和危险按钮三种风格。
 enum MiniButtonVariant {
   primary,
   ghost,
   danger,
 }
 
+/// 基础按钮组件，支持三种视觉风格和禁用态。
 class MiniButton extends BaseComponent {
   final String label;
   final VoidCallback? onPressed;
@@ -58,6 +60,7 @@ class MiniButton extends BaseComponent {
     );
   }
 
+  /// 根据当前主题和按钮风格，计算按钮的背景色、前景色和边框色。
   MiniButtonColors _resolveColors(MiniTheme theme) {
     switch (variant) {
       case MiniButtonVariant.primary:
@@ -82,6 +85,7 @@ class MiniButton extends BaseComponent {
   }
 }
 
+/// 用于承载按钮的背景色、前景色和边框色配置。
 class MiniButtonColors {
   final Color background;
   final Color foreground;

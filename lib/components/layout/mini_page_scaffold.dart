@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:miniui/components/nav/mini_app_bar.dart';
 import 'package:miniui/core/base/base_component.dart';
 
+/// 页面级脚手架组件，负责处理安全区域、顶部导航和底部导航。
 class MiniPageScaffold extends BaseComponent {
   final MiniAppBar? appBar;
   final Widget body;

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+/// 描述一组语义化的颜色 Token，用于统一管理主题中的主色、背景色等。
 class MiniColorTokens {
   final Color primary;
   final Color background;
@@ -16,6 +17,7 @@ class MiniColorTokens {
   });
 }
 
+/// 描述一组语义化的间距 Token，从 xs 到 xl 递增，用于统一布局间距。
 class MiniSpacingTokens {
   final double xs;
   final double sm;
@@ -32,6 +34,7 @@ class MiniSpacingTokens {
   });
 }
 
+/// 描述一组圆角 Token，用于统一组件的圆角风格。
 class MiniRadiusTokens {
   final BorderRadius small;
   final BorderRadius medium;
@@ -46,6 +49,7 @@ class MiniRadiusTokens {
   });
 }
 
+/// 描述一组排版 Token，用于统一文字大小和字重。
 class MiniTypographyTokens {
   final TextStyle body;
   final TextStyle small;
@@ -60,6 +64,7 @@ class MiniTypographyTokens {
   });
 }
 
+/// 聚合颜色、间距、圆角、排版等多类 Token，构成一整套主题。
 class MiniTheme {
   final String name;
   final Brightness brightness;
@@ -78,6 +83,7 @@ class MiniTheme {
   });
 }
 
+/// 内置的一组主题工厂，提供默认间距/圆角/排版和多套配色方案。
 class MiniThemes {
   static const MiniSpacingTokens defaultSpacing = MiniSpacingTokens(
     xs: 4,
