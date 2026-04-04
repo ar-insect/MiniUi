@@ -43,7 +43,7 @@ class MiniListItem extends BaseComponent {
         : Text(
             subtitle!,
             style: theme.typography.small.copyWith(
-              color: theme.colors.foreground.withOpacity(0.6),
+              color: theme.colors.foreground.withValues(alpha: 0.6),
             ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

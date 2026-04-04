@@ -23,7 +23,7 @@ class MiniDivider extends BaseComponent {
         height: thickness,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: theme.colors.foreground.withOpacity(0.06),
+            color: theme.colors.foreground.withValues(alpha: 0.06),
           ),
         ),
       ),

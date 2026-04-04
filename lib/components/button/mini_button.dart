@@ -70,7 +70,7 @@ class MiniButton extends BaseComponent {
         return MiniButtonColors(
           background: theme.colors.background,
           foreground: theme.colors.primary,
-          border: theme.colors.primary.withOpacity(0.3),
+          border: theme.colors.primary.withValues(alpha: 0.3),
         );
       case MiniButtonVariant.danger:
         return MiniButtonColors(

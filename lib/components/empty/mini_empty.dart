@@ -27,7 +27,7 @@ class MiniEmpty extends BaseComponent {
                   decoration: BoxDecoration(
                     borderRadius: theme.radius.large,
                     border: Border.all(
-                      color: theme.colors.foreground.withOpacity(0.08),
+                      color: theme.colors.foreground.withValues(alpha: 0.08),
                     ),
                     color: theme.colors.background,
                   ),
@@ -42,7 +42,7 @@ class MiniEmpty extends BaseComponent {
                             borderRadius: theme.radius.small,
                             border: Border.all(
                               color: theme.colors.foreground
-                                  .withOpacity(0.15),
+                                  .withValues(alpha: 0.15),
                             ),
                           ),
                         ),
@@ -50,7 +50,8 @@ class MiniEmpty extends BaseComponent {
                         Container(
                           width: theme.spacing.lg,
                           height: 2,
-                          color: theme.colors.foreground.withOpacity(0.12),
+                          color:
+                              theme.colors.foreground.withValues(alpha: 0.12),
                         ),
                       ],
                     ),
@@ -60,7 +61,7 @@ class MiniEmpty extends BaseComponent {
           SizedBox(height: theme.spacing.md),
           DefaultTextStyle(
             style: theme.typography.body.copyWith(
-              color: theme.colors.foreground.withOpacity(0.6),
+              color: theme.colors.foreground.withValues(alpha: 0.6),
             ),
             child: Text(message),
           ),

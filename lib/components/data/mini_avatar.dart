@@ -37,7 +37,7 @@ class MiniAvatar extends BaseComponent {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: theme.colors.primary.withOpacity(0.12),
+          color: theme.colors.primary.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(size / 2),
         ),
         child: Center(

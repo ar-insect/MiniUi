@@ -19,8 +19,8 @@ class MiniSwitch extends BaseComponent {
     final bool enabled = !disabled && onChanged != null;
 
     final Color trackColor = value
-        ? theme.colors.primary.withOpacity(0.9)
-        : theme.colors.foreground.withOpacity(0.18);
+        ? theme.colors.primary.withValues(alpha: 0.9)
+        : theme.colors.foreground.withValues(alpha: 0.18);
 
     final Color thumbColor =
         value ? theme.colors.background : theme.colors.background;
@@ -62,7 +62,8 @@ class MiniSwitch extends BaseComponent {
                     borderRadius: theme.radius.pill,
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                        color: theme.colors.foreground.withOpacity(0.18),
+                        color:
+                            theme.colors.foreground.withValues(alpha: 0.18),
                         blurRadius: 6,
                         offset: const Offset(0, 1),
                       ),

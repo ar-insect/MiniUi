@@ -33,7 +33,7 @@ class MiniSegmentedControl<T> extends BaseComponent {
         color: theme.colors.background,
         borderRadius: theme.radius.pill,
         border: Border.all(
-          color: theme.colors.foreground.withOpacity(0.12),
+          color: theme.colors.foreground.withValues(alpha: 0.12),
         ),
       ),
       child: Row(

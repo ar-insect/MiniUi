@@ -7,7 +7,7 @@
 - 可作为 SDK / 组件库跨项目复用
 - 纯 Token 驱动的设计系统（Color / Spacing / Radius / Typography）
 
-当前仓库同时包含组件实现与可视化 Demo 页面（Web / iOS / Android）。
+当前仓库同时包含组件实现与可视化 Demo（通过 `example/` 示例应用运行）。
 
 ---
 
@@ -67,13 +67,19 @@ lib/
     feedback/
       mini_toast.dart
 
-  demo/
-    home_page.dart    # 首页 Demo
-    list_page.dart    # 列表页 Demo
-    tokens_page.dart  # Theme Tokens 展示页
-
   miniui.dart         # 对外统一导出入口（模拟 SDK 用法）
-  main.dart           # main + MiniUiApp + 路由配置
+
+example/
+  lib/
+    main.dart         # 示例应用入口（完整 Demo：home / list / tokens / layout / feedback）
+    demo/
+      home_page.dart    # 首页 Demo
+      list_page.dart    # 列表页 Demo
+      tokens_page.dart  # Theme Tokens 展示页
+      layout_page.dart  # 布局与导航示例
+      feedback_page.dart# 反馈组件示例
+
+  example.dart       # 精简版使用示例（可选）
 ```
 
 ---
@@ -178,15 +184,17 @@ import 'package:miniui/miniui.dart';
 
 ### 路由结构
 
-[`lib/main.dart`](lib/main.dart) 使用 `WidgetsApp.onGenerateRoute` 管理三类页面：
+[`example/lib/main.dart`](example/lib/main.dart) 使用 `WidgetsApp.onGenerateRoute` 管理页面：
 
 - `/` → `MiniHomePage`
 - `/list-demo` → `MiniListDemoPage`
 - `/tokens` → `MiniTokensPage`
+- `/layout-demo` → `MiniLayoutDemoPage`
+- `/feedback-demo` → `MiniFeedbackDemoPage`
 
 ### MiniHomePage
 
-入口文件：[`lib/demo/home_page.dart`](lib/demo/home_page.dart)
+入口文件：[`example/lib/demo/home_page.dart`](example/lib/demo/home_page.dart)
 
 包含：
 
@@ -196,11 +204,11 @@ import 'package:miniui/miniui.dart';
 - 列表与 Toast 示例：
   - `MiniListItem + MiniDivider`
   - 点击列表项或按钮时，通过 `MiniToast.show` 弹出提示
-  - 提供入口按钮跳转到「列表页示例」和「主题 Tokens 示例」
+  - 提供入口按钮跳转到「列表页示例」「主题 Tokens 示例」「布局与导航示例」「反馈组件示例」
 
 ### MiniListDemoPage
 
-入口文件：[`lib/demo/list_page.dart`](lib/demo/list_page.dart)
+入口文件：[`example/lib/demo/list_page.dart`](example/lib/demo/list_page.dart)
 
 - 显示一组 `MiniListItem` + `MiniDivider` 构成的完整列表页骨架  
 - 顶部有返回区域（`‹ 返回`），点击 `Navigator.pop()` 回首页  
@@ -208,40 +216,58 @@ import 'package:miniui/miniui.dart';
 
 ### MiniTokensPage
 
-入口文件：[`lib/demo/tokens_page.dart`](lib/demo/tokens_page.dart)
+入口文件：[`example/lib/demo/tokens_page.dart`](example/lib/demo/tokens_page.dart)
 
 - Colors：展示当前主题的一组颜色 Token 色块  
 - Spacing：展示 xs–xl 对应的数值和高度对比  
 - Radius：展示 small / medium / large / pill 不同圆角盒子  
 - Typography：展示 heading / title / body / small 四种文字样式
 
+### MiniLayoutDemoPage
+
+入口文件：[`example/lib/demo/layout_page.dart`](example/lib/demo/layout_page.dart)
+
+- 演示 `MiniPageScaffold + MiniAppBar + MiniTabBar + MiniSegmentedControl` 的组合使用  
+- 顶部 SegmentedControl 切换 Segment，底部 TabBar 模拟主导航
+
+### MiniFeedbackDemoPage
+
+入口文件：[`example/lib/demo/feedback_page.dart`](example/lib/demo/feedback_page.dart)
+
+- `MiniDialog` / `MiniActionSheet` / `MiniSnackbar` / `MiniLoadingOverlay` 等反馈组件示例  
+- `MiniBadge` / `MiniAvatar` / `MiniSkeleton` 状态与占位骨架示例
+
 ---
 
 ## 开发与调试
 
-项目根目录下提供了一组脚本（仅在 macOS 上验证）：
+### 在本仓库中运行完整 Demo 应用
+
+在项目根目录执行：
 
 ```bash
-tools/dev_web.sh      # Web 端调试（Chrome）
-tools/dev_ios.sh      # iOS 调试
-tools/dev_android.sh  # Android 调试
+flutter run -t example/lib/main.dart
 ```
 
-使用示例：
+该命令会使用 `example/lib/main.dart` 作为入口，运行包含 `home / list / tokens / layout / feedback` 的完整示例应用。
+
+如需以 Web 或特定设备运行，可以指定设备：
 
 ```bash
-sh tools/dev_web.sh
+# Web（Chrome）
+flutter run -t example/lib/main.dart -d chrome
+
+# iOS 模拟器
+flutter run -t example/lib/main.dart -d ios
+
+# Android 模拟器
+flutter run -t example/lib/main.dart -d android
 ```
-
-运行后可在终端使用：
-
-- `r`：热重载（Hot Reload）
-- `R`：热重启（Hot Restart）
 
 前提：
 
-- 已安装对应平台的开发环境（Chrome / Xcode / Android SDK）
-- Flutter 已启用 Web：`flutter config --enable-web`
+- 已安装对应平台的开发环境（Chrome / Xcode / Android SDK 等）
+- Flutter 已启用 Web 时，需执行过：`flutter config --enable-web`
 
 ---
 

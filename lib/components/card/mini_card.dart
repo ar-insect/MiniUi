@@ -35,7 +35,7 @@ class MiniCard extends BaseComponent {
             color: theme.colors.background,
             borderRadius: theme.radius.medium,
             border: Border.all(
-              color: theme.colors.foreground.withOpacity(0.08),
+              color: theme.colors.foreground.withValues(alpha: 0.08),
             ),
           ),
           child: content,
@@ -54,10 +54,10 @@ class MiniCard extends BaseComponent {
           ),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: theme.colors.background.withOpacity(0.5),
+              color: theme.colors.background.withValues(alpha: 0.5),
               borderRadius: theme.radius.medium,
               border: Border.all(
-                color: theme.colors.foreground.withOpacity(0.06),
+                color: theme.colors.foreground.withValues(alpha: 0.06),
               ),
             ),
             child: content,

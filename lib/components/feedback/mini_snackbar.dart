@@ -57,7 +57,7 @@ class MiniSnackbar extends BaseComponent {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: theme.colors.foreground.withOpacity(0.9),
+        color: theme.colors.foreground.withValues(alpha: 0.9),
         borderRadius: theme.radius.medium,
       ),
       child: Padding(

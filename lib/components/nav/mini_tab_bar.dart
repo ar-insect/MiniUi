@@ -54,12 +54,12 @@ class MiniTabBar extends BaseComponent {
     final Border border = Border(
       top: isBottom
           ? BorderSide(
-              color: theme.colors.foreground.withOpacity(0.06),
+              color: theme.colors.foreground.withValues(alpha: 0.06),
             )
           : BorderSide.none,
       bottom: !isBottom
           ? BorderSide(
-              color: theme.colors.foreground.withOpacity(0.06),
+              color: theme.colors.foreground.withValues(alpha: 0.06),
             )
           : BorderSide.none,
     );
@@ -84,7 +84,7 @@ class MiniTabBar extends BaseComponent {
         child: Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: theme.colors.background.withOpacity(0.7),
+            color: theme.colors.background.withValues(alpha: 0.7),
             border: border,
           ),
           child: row,
@@ -103,7 +103,7 @@ class MiniTabBar extends BaseComponent {
 
     final Color color = selected
         ? theme.colors.primary
-        : theme.colors.foreground.withOpacity(0.6);
+        : theme.colors.foreground.withValues(alpha: 0.6);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,

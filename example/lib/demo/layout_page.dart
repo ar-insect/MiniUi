@@ -85,7 +85,8 @@ class _MiniLayoutDemoPageState extends State<MiniLayoutDemoPage> {
                     MiniText(
                       '当前 Segment：$_segment',
                       style: theme.typography.small.copyWith(
-                        color: theme.colors.foreground.withOpacity(0.7),
+                        color:
+                            theme.colors.foreground.withValues(alpha: 0.7),
                       ),
                     ),
                     SizedBox(height: theme.spacing.md),

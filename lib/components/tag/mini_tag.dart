@@ -24,13 +24,13 @@ class MiniTag extends BaseComponent {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: filled
-            ? theme.colors.accent.withOpacity(0.15)
+            ? theme.colors.accent.withValues(alpha: 0.15)
             : theme.colors.background,
         borderRadius: theme.radius.pill,
         border: filled
             ? null
             : Border.all(
-                color: theme.colors.accent.withOpacity(0.6),
+                color: theme.colors.accent.withValues(alpha: 0.6),
               ),
       ),
       child: Padding(
@@ -58,7 +58,7 @@ class MiniTag extends BaseComponent {
                   height: theme.spacing.sm,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: theme.colors.accent.withOpacity(0.2),
+                    color: theme.colors.accent.withValues(alpha: 0.2),
                   ),
                 ),
               ),

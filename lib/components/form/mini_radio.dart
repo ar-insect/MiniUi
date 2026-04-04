@@ -26,7 +26,7 @@ class MiniRadio<T> extends BaseComponent {
 
     final Color borderColor = _selected
         ? theme.colors.primary
-        : theme.colors.foreground.withOpacity(0.3);
+        : theme.colors.foreground.withValues(alpha: 0.3);
 
     final Widget circle = AnimatedOpacity(
       duration: const Duration(milliseconds: 120),
@@ -80,8 +80,8 @@ class MiniRadio<T> extends BaseComponent {
           SizedBox(width: theme.spacing.sm),
           DefaultTextStyle(
             style: theme.typography.body.copyWith(
-              color: theme.colors.foreground.withOpacity(
-                disabled ? 0.4 : 0.8,
+              color: theme.colors.foreground.withValues(
+                alpha: disabled ? 0.4 : 0.8,
               ),
             ),
             child: Text(label!),

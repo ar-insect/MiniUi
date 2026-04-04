@@ -35,7 +35,7 @@ class MiniSkeleton extends BaseComponent {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: theme.colors.foreground.withOpacity(0.06),
+        color: theme.colors.foreground.withValues(alpha: 0.06),
         borderRadius: shape == MiniSkeletonShape.circle
             ? BorderRadius.circular(width / 2)
             : (borderRadius ?? theme.radius.small),

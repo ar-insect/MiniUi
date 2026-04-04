@@ -57,7 +57,7 @@ class MiniAppBar extends BaseComponent {
           color: theme.colors.background,
           border: Border(
             bottom: BorderSide(
-              color: theme.colors.foreground.withOpacity(0.06),
+              color: theme.colors.foreground.withValues(alpha: 0.06),
             ),
           ),
         ),
@@ -77,10 +77,10 @@ class MiniAppBar extends BaseComponent {
             horizontal: theme.spacing.lg,
           ),
           decoration: BoxDecoration(
-            color: theme.colors.background.withOpacity(0.6),
+            color: theme.colors.background.withValues(alpha: 0.6),
             border: Border(
               bottom: BorderSide(
-                color: theme.colors.foreground.withOpacity(0.08),
+                color: theme.colors.foreground.withValues(alpha: 0.08),
               ),
             ),
           ),

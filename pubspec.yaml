@@ -1,6 +1,5 @@
 name: miniui
-description: "A new Flutter project."
-publish_to: 'none'
+description: "A lightweight Flutter UI component library built on widgets without material.dart."
 
 version: 1.0.0+1
 

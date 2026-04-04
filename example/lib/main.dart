@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
-import 'package:miniui/demo/home_page.dart';
-import 'package:miniui/demo/list_page.dart';
-import 'package:miniui/demo/tokens_page.dart';
-import 'package:miniui/demo/layout_page.dart';
-import 'package:miniui/demo/feedback_page.dart';
+import 'package:miniui/miniui.dart';
+import 'demo/home_page.dart';
+import 'demo/list_page.dart';
+import 'demo/tokens_page.dart';
+import 'demo/layout_page.dart';
+import 'demo/feedback_page.dart';
 
 void main() {
   final MiniThemeController controller = MiniThemeController();
@@ -94,3 +94,4 @@ class _MiniUiAppState extends State<MiniUiApp> {
     );
   }
 }
+

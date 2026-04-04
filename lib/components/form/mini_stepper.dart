@@ -81,7 +81,7 @@ class MiniStepper extends BaseComponent {
             color: theme.colors.background,
             borderRadius: theme.radius.small,
             border: Border.all(
-              color: theme.colors.foreground.withOpacity(0.2),
+              color: theme.colors.foreground.withValues(alpha: 0.2),
             ),
           ),
           child: Center(

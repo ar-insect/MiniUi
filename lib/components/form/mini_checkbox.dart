@@ -22,7 +22,7 @@ class MiniCheckbox extends BaseComponent {
 
     final Color borderColor = value
         ? theme.colors.primary
-        : theme.colors.foreground.withOpacity(0.3);
+        : theme.colors.foreground.withValues(alpha: 0.3);
 
     final Color backgroundColor = value
         ? theme.colors.primary
@@ -74,8 +74,8 @@ class MiniCheckbox extends BaseComponent {
           SizedBox(width: theme.spacing.sm),
           DefaultTextStyle(
             style: theme.typography.body.copyWith(
-              color: theme.colors.foreground.withOpacity(
-                disabled ? 0.4 : 0.8,
+              color: theme.colors.foreground.withValues(
+                alpha: disabled ? 0.4 : 0.8,
               ),
             ),
             child: Text(label!),

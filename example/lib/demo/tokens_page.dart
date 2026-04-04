@@ -88,7 +88,7 @@ class MiniTokensPage extends StatelessWidget {
               color: color,
               borderRadius: theme.radius.small,
               border: Border.all(
-                color: theme.colors.foreground.withOpacity(0.08),
+                color: theme.colors.foreground.withValues(alpha: 0.08),
               ),
             ),
           ),
@@ -96,7 +96,7 @@ class MiniTokensPage extends StatelessWidget {
           MiniText(
             label,
             style: theme.typography.small.copyWith(
-              color: theme.colors.foreground.withOpacity(0.8),
+              color: theme.colors.foreground.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -142,7 +142,7 @@ class MiniTokensPage extends StatelessWidget {
           Container(
             height: value,
             decoration: BoxDecoration(
-              color: theme.colors.primary.withOpacity(0.2),
+              color: theme.colors.primary.withValues(alpha: 0.2),
               borderRadius: theme.radius.small,
             ),
           ),
@@ -150,7 +150,7 @@ class MiniTokensPage extends StatelessWidget {
           MiniText(
             '$label (${value.toStringAsFixed(0)})',
             style: theme.typography.small.copyWith(
-              color: theme.colors.foreground.withOpacity(0.8),
+              color: theme.colors.foreground.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -195,7 +195,7 @@ class MiniTokensPage extends StatelessWidget {
           Container(
             height: 40,
             decoration: BoxDecoration(
-              color: theme.colors.primary.withOpacity(0.12),
+              color: theme.colors.primary.withValues(alpha: 0.12),
               borderRadius: radius,
             ),
           ),
@@ -203,7 +203,7 @@ class MiniTokensPage extends StatelessWidget {
           MiniText(
             label,
             style: theme.typography.small.copyWith(
-              color: theme.colors.foreground.withOpacity(0.8),
+              color: theme.colors.foreground.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -244,7 +244,7 @@ class MiniTokensPage extends StatelessWidget {
           MiniText(
             'Small - 辅助说明文字。',
             style: t.small.copyWith(
-              color: theme.colors.foreground.withOpacity(0.8),
+              color: theme.colors.foreground.withValues(alpha: 0.8),
             ),
           ),
         ],

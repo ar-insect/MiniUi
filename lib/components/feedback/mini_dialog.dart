@@ -101,7 +101,7 @@ class MiniDialog extends BaseComponent {
               MiniText(
                 message,
                 style: theme.typography.body.copyWith(
-                  color: theme.colors.foreground.withOpacity(0.8),
+                  color: theme.colors.foreground.withValues(alpha: 0.8),
                 ),
               ),
               SizedBox(height: theme.spacing.lg),

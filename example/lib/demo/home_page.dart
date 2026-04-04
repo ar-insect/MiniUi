@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/demo/list_page.dart';
-import 'package:miniui/demo/layout_page.dart';
-import 'package:miniui/demo/tokens_page.dart';
-import 'package:miniui/demo/feedback_page.dart';
 import 'package:miniui/miniui.dart';
+import 'list_page.dart';
+import 'layout_page.dart';
+import 'tokens_page.dart';
+import 'feedback_page.dart';
 
 class MiniHomePage extends StatefulWidget {
   final MiniThemeController controller;
@@ -322,3 +322,4 @@ class _MiniHomePageState extends State<MiniHomePage> {
     );
   }
 }
+

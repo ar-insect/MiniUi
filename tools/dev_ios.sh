@@ -6,5 +6,5 @@ PROJECT_ROOT="${SCRIPT_DIR%/tools}"
 
 cd "$PROJECT_ROOT"
 
-flutter run -d ios
+flutter run -t example/lib/main.dart -d ios
 

@@ -10,7 +10,7 @@ class MiniLoadingPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint backgroundPaint = Paint()
-      ..color = color.withOpacity(0.2)
+      ..color = color.withValues(alpha: 0.2)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3;
 

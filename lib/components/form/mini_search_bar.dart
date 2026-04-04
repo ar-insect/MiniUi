@@ -38,7 +38,7 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
         color: theme.colors.background,
         borderRadius: theme.radius.pill,
         border: Border.all(
-          color: theme.colors.foreground.withOpacity(0.12),
+          color: theme.colors.foreground.withValues(alpha: 0.12),
         ),
       ),
       child: Padding(
@@ -54,7 +54,7 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: theme.colors.foreground.withOpacity(0.4),
+                  color: theme.colors.foreground.withValues(alpha: 0.4),
                   width: 1.5,
                 ),
               ),
@@ -63,7 +63,7 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
                   width: theme.spacing.xs,
                   height: theme.spacing.xs,
                   decoration: BoxDecoration(
-                    color: theme.colors.foreground.withOpacity(0.6),
+                    color: theme.colors.foreground.withValues(alpha: 0.6),
                     borderRadius: theme.radius.small,
                   ),
                 ),
@@ -80,7 +80,7 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
                 ),
                 cursorColor: theme.colors.primary,
                 backgroundCursorColor: theme.colors.background,
-                selectionColor: theme.colors.primary.withOpacity(0.2),
+                selectionColor: theme.colors.primary.withValues(alpha: 0.2),
                 onChanged: widget.onChanged,
               ),
             ),
@@ -99,14 +99,16 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
                     height: theme.spacing.md,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: theme.colors.foreground.withOpacity(0.15),
+                      color:
+                          theme.colors.foreground.withValues(alpha: 0.15),
                     ),
                     child: Center(
                       child: Container(
                         width: theme.spacing.xs,
                         height: 1.5,
                         decoration: BoxDecoration(
-                          color: theme.colors.foreground.withOpacity(0.7),
+                          color: theme.colors.foreground
+                              .withValues(alpha: 0.7),
                           borderRadius: theme.radius.small,
                         ),
                       ),

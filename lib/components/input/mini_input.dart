@@ -48,7 +48,7 @@ class _MiniInputState extends State<MiniInput> {
         color: theme.colors.background,
         borderRadius: theme.radius.medium,
         border: Border.all(
-          color: theme.colors.foreground.withOpacity(0.2),
+          color: theme.colors.foreground.withValues(alpha: 0.2),
         ),
       ),
       child: Padding(
@@ -68,7 +68,7 @@ class _MiniInputState extends State<MiniInput> {
               ),
               cursorColor: theme.colors.primary,
               backgroundCursorColor: theme.colors.background,
-              selectionColor: theme.colors.primary.withOpacity(0.2),
+              selectionColor: theme.colors.primary.withValues(alpha: 0.2),
               inputFormatters: <TextInputFormatter>[],
               onChanged: widget.onChanged,
             ),
@@ -77,7 +77,7 @@ class _MiniInputState extends State<MiniInput> {
                 child: Text(
                   widget.placeholder!,
                   style: theme.typography.body.copyWith(
-                    color: theme.colors.foreground.withOpacity(0.4),
+                    color: theme.colors.foreground.withValues(alpha: 0.4),
                   ),
                 ),
               ),
