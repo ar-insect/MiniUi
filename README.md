@@ -256,6 +256,51 @@ void main() {
 - Demo 或宿主应用中可以通过 `MiniThemeController` 在内置主题和自定义皮肤之间切换；
 - 你也可以按同样方式定义多套品牌皮肤，再统一放入 `availableThemes` 中管理。
 
+### 在不改库 API 的前提下扩展更多间距 Token（如 xxs / xxl）
+
+如果业务侧需要比 `xs ~ xl` 更细/更大的间距，而又不想修改 `MiniSpacingTokens` 的定义，可以在宿主项目里包一层自己的扩展类型，例如：
+
+```dart
+import 'package:miniui/miniui.dart';
+
+/// 业务侧的扩展 Spacing，额外挂载 xxs / xxl。
+class ExtendedSpacing {
+  final MiniSpacingTokens core;
+  final double xxs;
+  final double xxl;
+
+  const ExtendedSpacing({
+    required this.core,
+    required this.xxs,
+    required this.xxl,
+  });
+}
+
+// 以 MiniUi 的默认间距为基础，扩展一套 xxs / xxl
+const ExtendedSpacing kExtendedSpacing = ExtendedSpacing(
+  core: MiniThemes.defaultSpacing,
+  xxs: 2,
+  xxl: 40,
+);
+```
+
+在使用时：
+
+- MiniUi 组件内部仍然只依赖 `theme.spacing.xs ~ xl`，保持库 API 稳定；
+- 你的业务组件如果需要更小/更大的间距，可以写成：
+
+  ```dart
+  Padding(
+    padding: EdgeInsets.symmetric(
+      horizontal: kExtendedSpacing.xxl,
+      vertical: kExtendedSpacing.core.sm,
+    ),
+    child: ...
+  )
+  ```
+
+这样既不会破坏 MiniUi 的 Token 结构，又可以在业务侧灵活扩展更多「自定义尺寸」。
+
 ---
 
 ## 组件一览
