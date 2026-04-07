@@ -42,7 +42,7 @@ class MiniSegmentedControl<T> extends BaseComponent {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           for (int i = 0; i < segments.length; i++)
-            _buildSegment(context, theme, segments[i], i == segments.length - 1),
+            _buildSegment(context, theme, segments[i], i, segments.length),
         ],
       ),
     );
@@ -52,7 +52,8 @@ class MiniSegmentedControl<T> extends BaseComponent {
     BuildContext context,
     MiniTheme theme,
     MiniSegment<T> segment,
-    bool isLast,
+    int index,
+    int total,
   ) {
     final bool selected = segment.value == value;
 
@@ -61,6 +62,23 @@ class MiniSegmentedControl<T> extends BaseComponent {
     final Color textColor =
         selected ? theme.colors.background : theme.colors.foreground;
 
+    BorderRadius radius;
+    if (total == 1) {
+      radius = theme.radius.pill;
+    } else if (index == 0) {
+      radius = BorderRadius.only(
+        topLeft: theme.radius.pill.topLeft,
+        bottomLeft: theme.radius.pill.bottomLeft,
+      );
+    } else if (index == total - 1) {
+      radius = BorderRadius.only(
+        topRight: theme.radius.pill.topRight,
+        bottomRight: theme.radius.pill.bottomRight,
+      );
+    } else {
+      radius = BorderRadius.zero;
+    }
+
     return Expanded(
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -68,8 +86,7 @@ class MiniSegmentedControl<T> extends BaseComponent {
         child: Container(
           decoration: BoxDecoration(
             color: bgColor,
-            borderRadius:
-                isLast ? theme.radius.pill : const BorderRadius.horizontal(),
+            borderRadius: radius,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: theme.spacing.md,
@@ -88,4 +105,3 @@ class MiniSegmentedControl<T> extends BaseComponent {
     );
   }
 }
-

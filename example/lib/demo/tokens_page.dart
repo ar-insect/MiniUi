@@ -10,10 +10,26 @@ class MiniTokensPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
 
-    return Container(
-      color: theme.colors.background,
-      alignment: Alignment.topCenter,
-      child: SafeArea(
+    return MiniPageScaffold(
+      appBar: MiniAppBar(
+        leading: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: MiniText(
+            '‹ 返回',
+            style: theme.typography.body.copyWith(
+              color: theme.colors.foreground,
+            ),
+          ),
+        ),
+        title: const MiniText('Theme Tokens'),
+        centerTitle: true,
+      ),
+      body: Container(
+        color: theme.colors.background,
+        alignment: Alignment.topCenter,
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: ConstrainedBox(
@@ -21,13 +37,6 @@ class MiniTokensPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                MiniText(
-                  'Theme Tokens',
-                  style: theme.typography.heading.copyWith(
-                    color: theme.colors.foreground,
-                  ),
-                ),
-                const SizedBox(height: 16),
                 _buildColorSection(theme),
                 const SizedBox(height: 16),
                 _buildSpacingSection(theme),
@@ -252,4 +261,3 @@ class MiniTokensPage extends StatelessWidget {
     );
   }
 }
-

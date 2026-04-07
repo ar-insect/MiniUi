@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
@@ -43,20 +44,54 @@ class _MiniInputState extends State<MiniInput> {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final bool isIOS = defaultTargetPlatform == TargetPlatform.iOS;
+    final bool isGlass = isIOS && theme.name == 'glass';
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
+    BoxDecoration decoration;
+    EdgeInsetsGeometry padding;
+
+    if (isGlass) {
+      decoration = BoxDecoration(
+        color: theme.colors.background.withValues(alpha: 0.22),
+        borderRadius: theme.radius.pill,
+        border: Border.all(
+          color: theme.colors.foreground.withValues(alpha: 0.08),
+        ),
+      );
+      padding = EdgeInsets.symmetric(
+        horizontal: theme.spacing.md,
+        vertical: theme.spacing.sm,
+      );
+    } else if (isIOS) {
+      decoration = BoxDecoration(
+        color: theme.colors.foreground.withValues(alpha: 0.06),
+        borderRadius: theme.radius.pill,
+        border: Border.all(
+          color: theme.colors.foreground.withValues(alpha: 0.06),
+        ),
+      );
+      padding = EdgeInsets.symmetric(
+        horizontal: theme.spacing.md,
+        vertical: theme.spacing.sm,
+      );
+    } else {
+      decoration = BoxDecoration(
         color: theme.colors.background,
         borderRadius: theme.radius.medium,
         border: Border.all(
           color: theme.colors.foreground.withValues(alpha: 0.2),
         ),
-      ),
+      );
+      padding = EdgeInsets.symmetric(
+        horizontal: theme.spacing.md,
+        vertical: theme.spacing.sm,
+      );
+    }
+
+    return DecoratedBox(
+      decoration: decoration,
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: theme.spacing.md,
-          vertical: theme.spacing.sm,
-        ),
+        padding: padding,
         child: Stack(
           alignment: Alignment.centerLeft,
           children: <Widget>[

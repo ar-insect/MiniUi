@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:miniui/components/text/mini_text.dart';
 import 'package:miniui/core/base/base_component.dart';
@@ -33,7 +34,8 @@ class MiniTabBar extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
-    final bool isGlass = theme.name == 'glass';
+    final bool isGlass =
+        theme.name == 'glass' && defaultTargetPlatform == TargetPlatform.iOS;
 
     final Widget row = Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,7 +52,7 @@ class MiniTabBar extends BaseComponent {
 
     final EdgeInsetsGeometry padding = EdgeInsets.symmetric(
       horizontal: theme.spacing.lg,
-      vertical: theme.spacing.sm,
+      vertical: isGlass ? theme.spacing.xs : theme.spacing.sm,
     );
 
     final Border border = Border(
@@ -80,13 +82,13 @@ class MiniTabBar extends BaseComponent {
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 20,
-          sigmaY: 20,
+          sigmaX: 30,
+          sigmaY: 30,
         ),
         child: Container(
           padding: padding,
           decoration: BoxDecoration(
-            color: theme.colors.background.withValues(alpha: 0.7),
+            color: theme.colors.background.withValues(alpha: 0.30),
             border: border,
           ),
           child: row,

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
@@ -23,8 +24,10 @@ class MiniAppBar extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
-    final double barHeight = height ?? theme.spacing.xl * 2;
-    final bool isGlass = theme.name == 'glass';
+    final bool isGlass =
+        theme.name == 'glass' && defaultTargetPlatform == TargetPlatform.iOS;
+    final double barHeight =
+        height ?? (isGlass ? 44 : theme.spacing.xl * 2);
 
     final Widget row = Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,8 +72,8 @@ class MiniAppBar extends BaseComponent {
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 20,
-          sigmaY: 20,
+          sigmaX: 30,
+          sigmaY: 30,
         ),
         child: Container(
           height: barHeight,
@@ -78,7 +81,7 @@ class MiniAppBar extends BaseComponent {
             horizontal: theme.spacing.lg,
           ),
           decoration: BoxDecoration(
-            color: theme.colors.background.withValues(alpha: 0.6),
+            color: theme.colors.background.withValues(alpha: 0.24),
             border: Border(
               bottom: BorderSide(
                 color: theme.colors.foreground.withValues(alpha: 0.08),

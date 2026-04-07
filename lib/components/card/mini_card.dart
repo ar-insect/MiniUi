@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
@@ -19,7 +20,8 @@ class MiniCard extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
-    final bool isGlass = theme.name == 'glass';
+    final bool isGlass =
+        theme.name == 'glass' && defaultTargetPlatform == TargetPlatform.iOS;
 
     final Widget content = Padding(
       padding: padding == EdgeInsets.zero
@@ -50,15 +52,15 @@ class MiniCard extends BaseComponent {
         borderRadius: theme.radius.medium,
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 20,
-            sigmaY: 20,
+            sigmaX: 30,
+            sigmaY: 30,
           ),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: theme.colors.background.withValues(alpha: 0.5),
+              color: theme.colors.background.withValues(alpha: 0.28),
               borderRadius: theme.radius.medium,
               border: Border.all(
-                color: theme.colors.foreground.withValues(alpha: 0.06),
+                color: theme.colors.foreground.withValues(alpha: 0.10),
               ),
             ),
             child: content,
