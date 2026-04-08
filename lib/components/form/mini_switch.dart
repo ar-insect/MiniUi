@@ -31,6 +31,36 @@ class MiniSwitch extends BaseComponent {
     final double padding = theme.spacing.xs;
     final double thumbSize = height - padding * 2;
 
+    final Widget track = AnimatedContainer(
+      duration: const Duration(milliseconds: 160),
+      decoration: BoxDecoration(
+        color: trackColor,
+        borderRadius: theme.radius.pill,
+      ),
+    );
+
+    final Widget thumb = AnimatedPositioned(
+      duration: const Duration(milliseconds: 160),
+      curve: Curves.easeInOut,
+      left: value ? width - thumbSize - padding : padding,
+      top: padding,
+      child: Container(
+        width: thumbSize,
+        height: thumbSize,
+        decoration: BoxDecoration(
+          color: thumbColor,
+          borderRadius: theme.radius.pill,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: theme.colors.foreground.withValues(alpha: 0.18),
+              blurRadius: 6,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+      ),
+    );
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: enabled ? () => onChanged!.call(!value) : null,
@@ -42,37 +72,7 @@ class MiniSwitch extends BaseComponent {
           height: height,
           child: Stack(
             alignment: Alignment.centerLeft,
-            children: <Widget>[
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 160),
-                decoration: BoxDecoration(
-                  color: trackColor,
-                  borderRadius: theme.radius.pill,
-                ),
-              ),
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 160),
-                curve: Curves.easeInOut,
-                left: value ? width - thumbSize - padding : padding,
-                top: padding,
-                child: Container(
-                  width: thumbSize,
-                  height: thumbSize,
-                  decoration: BoxDecoration(
-                    color: thumbColor,
-                    borderRadius: theme.radius.pill,
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color:
-                            theme.colors.foreground.withValues(alpha: 0.18),
-                        blurRadius: 6,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+            children: <Widget>[track, thumb],
           ),
         ),
       ),
