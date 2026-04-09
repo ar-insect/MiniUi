@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 import 'package:miniui/core/base/base_component.dart';
 
@@ -83,11 +85,13 @@ class _MiniButtonBody extends StatefulWidget {
 
 class _MiniButtonBodyState extends State<_MiniButtonBody> {
   bool _pressed = false;
+  Timer? _pressResetTimer;
 
   void _handleTapDown(TapDownDetails details) {
     if (widget.disabled || widget.onPressed == null) {
       return;
     }
+    _pressResetTimer?.cancel();
     setState(() {
       _pressed = true;
     });
@@ -97,7 +101,8 @@ class _MiniButtonBodyState extends State<_MiniButtonBody> {
     if (widget.disabled || widget.onPressed == null) {
       return;
     }
-    Future<void>.delayed(const Duration(milliseconds: 80), () {
+    _pressResetTimer?.cancel();
+    _pressResetTimer = Timer(const Duration(milliseconds: 80), () {
       if (!mounted) {
         return;
       }
@@ -105,6 +110,12 @@ class _MiniButtonBodyState extends State<_MiniButtonBody> {
         _pressed = false;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _pressResetTimer?.cancel();
+    super.dispose();
   }
 
   @override
