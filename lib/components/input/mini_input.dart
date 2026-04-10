@@ -45,20 +45,11 @@ class _MiniInputState extends State<MiniInput> {
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
     final bool isIOS = defaultTargetPlatform == TargetPlatform.iOS;
-    final bool isGlass = isIOS && theme.name == 'glass';
 
     BoxDecoration decoration;
     EdgeInsetsGeometry padding = theme.componentSizes.inputPadding;
 
-    if (isGlass) {
-      decoration = BoxDecoration(
-        color: theme.colors.background.withValues(alpha: 0.22),
-        borderRadius: theme.radius.pill,
-        border: Border.all(
-          color: theme.colors.foreground.withValues(alpha: 0.08),
-        ),
-      );
-    } else if (isIOS) {
+    if (isIOS) {
       decoration = BoxDecoration(
         color: theme.colors.foreground.withValues(alpha: 0.06),
         borderRadius: theme.radius.pill,

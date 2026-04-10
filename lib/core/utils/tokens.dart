@@ -168,6 +168,13 @@ class MiniComponentSizeTokens {
   final EdgeInsets buttonPadding;
   final EdgeInsets inputPadding;
 
+  /// 按钮与输入框等组件的「整体尺寸」Token。
+  ///
+  /// - buttonPadding：控制按钮的高度和左右留白
+  /// - inputPadding：控制输入框的高度和左右留白
+  ///
+  /// 注意：与 [MiniSpacingTokens] 不同，这里描述的是组件级别的尺寸，
+  /// 用于在不同主题之间快速切换紧凑 / 宽松风格。
   const MiniComponentSizeTokens({
     required this.buttonPadding,
     required this.inputPadding,
@@ -268,12 +275,14 @@ class MiniTheme {
     MiniTheme b,
     double t,
   ) {
+    // 为不同 Token 使用略微不同的补间曲线，使整体主题切换更柔和。
     final double colorT = Curves.easeInOutCubic.transform(t);
     final double spacingT = Curves.easeOutCubic.transform(t);
     final double radiusT = Curves.easeOut.transform(t);
     final double typographyT = Curves.easeInOut.transform(t);
     final double componentSizeT = spacingT;
 
+    // 避免在一半进度时就切换明暗模式，延后到 0.75 再翻转亮度。
     const double brightnessFlipPoint = 0.75;
     final Brightness brightness =
         t < brightnessFlipPoint ? a.brightness : b.brightness;

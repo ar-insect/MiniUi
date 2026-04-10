@@ -204,7 +204,7 @@ class MiniComponentSizeTokens {
 
 内置主题已经为你填好了默认值，对应当前视觉（不会改变现有效果）：
 
-- 默认主题族（`light / dark / blue / red / festival / glass`）
+- 默认主题族（`light / dark / blue / red / festival`）
   - `buttonPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 10)`
   - `inputPadding  = EdgeInsets.symmetric(horizontal: 14, vertical: 10)`
 - `compact` 主题
@@ -288,7 +288,7 @@ WidgetsApp(
 
 ### 自定义皮肤 / 自定义主题 Token 示例
 
-在内置 `light / dark / blue / red / festival / glass` 之外，你可以基于 Token 定义一套自己的品牌皮肤，例如：
+在内置 `light / dark / blue / red / festival` 之外，你可以基于 Token 定义一套自己的品牌皮肤，例如：
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -377,72 +377,7 @@ const ExtendedSpacing kExtendedSpacing = ExtendedSpacing(
 
 ---
 
-## 进阶：Glass / Overlay / Size Preset Helper
-
-### Glass Helper：miniIsGlassIOS / MiniGlassSurface
-
-在多个组件中会用到 iOS 下的玻璃态视觉（模糊 + 半透明背景 + 边框），为减少重复代码，核心层提供了：
-
-```dart
-// lib/core/base/base_component.dart
-bool miniIsGlassIOS(MiniTheme theme) {
-  return theme.name == 'glass' &&
-      defaultTargetPlatform == TargetPlatform.iOS;
-}
-
-class MiniGlassSurface extends StatelessWidget {
-  final MiniTheme theme;
-  final BorderRadius borderRadius;
-  final Color backgroundColor;
-  final BoxBorder? border;
-  final Widget child;
-
-  const MiniGlassSurface({
-    super.key,
-    required this.theme,
-    required this.borderRadius,
-    required this.backgroundColor,
-    this.border,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: borderRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: borderRadius,
-            border: border,
-          ),
-          child: child,
-        ),
-      ),
-    );
-  }
-}
-```
-
-库内的 `MiniCard` / `MiniAppBar` / `MiniTabBar` 都已统一使用这些 helper，你在自定义组件里也可以直接复用：
-
-```dart
-final theme = MiniThemeProvider.of(context);
-
-if (miniIsGlassIOS(theme)) {
-  return MiniGlassSurface(
-    theme: theme,
-    borderRadius: theme.radius.medium,
-    backgroundColor: theme.colors.background.withValues(alpha: 0.24),
-    border: Border.all(
-      color: theme.colors.foreground.withValues(alpha: 0.08),
-    ),
-    child: child,
-  );
-}
-```
+## 进阶：Overlay / Size Preset Helper
 
 ### Overlay Helper：miniShowOverlayEntry
 

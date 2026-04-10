@@ -91,6 +91,7 @@ class _MiniButtonBodyState extends State<_MiniButtonBody> {
     if (widget.disabled || widget.onPressed == null) {
       return;
     }
+    // 按下时立刻进入按压态，同时取消之前可能遗留的定时器。
     _pressResetTimer?.cancel();
     setState(() {
       _pressed = true;
@@ -101,6 +102,8 @@ class _MiniButtonBodyState extends State<_MiniButtonBody> {
     if (widget.disabled || widget.onPressed == null) {
       return;
     }
+    // 松开后稍微延迟一段时间再还原，制造轻微的「回弹」手感。
+    // 使用 Timer 便于在 dispose 中统一取消，避免测试时产生挂起定时器。
     _pressResetTimer?.cancel();
     _pressResetTimer = Timer(const Duration(milliseconds: 80), () {
       if (!mounted) {
@@ -114,6 +117,7 @@ class _MiniButtonBodyState extends State<_MiniButtonBody> {
 
   @override
   void dispose() {
+    // 防止组件销毁后定时器仍在回调 setState，导致异常。
     _pressResetTimer?.cancel();
     super.dispose();
   }

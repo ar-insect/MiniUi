@@ -150,20 +150,6 @@ class _MiniHomePageState extends State<MiniHomePage> {
               ),
             ],
           ),
-          SizedBox(height: theme.spacing.sm),
-          MiniLiquidGlass(
-            child: Padding(
-              padding: EdgeInsets.all(theme.spacing.md),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  MiniLoading(),
-                  SizedBox(width: 8),
-                  MiniText('Liquid glass'),
-                ],
-              ),
-            ),
-          ),
         ],
       ),
     );

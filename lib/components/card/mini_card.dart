@@ -17,7 +17,6 @@ class MiniCard extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
-    final bool isGlass = miniIsGlassIOS(theme);
 
     final Widget content = Padding(
       padding: padding == EdgeInsets.zero
@@ -26,45 +25,23 @@ class MiniCard extends BaseComponent {
       child: child,
     );
 
+    // 外层统一给卡片加一层轻微阴影，以贴近 iOS 16 之后的卡片视觉效果。
     return Padding(
       padding: margin,
-      child: isGlass
-          ? DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: theme.radius.medium,
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color:
-                        theme.colors.foreground.withValues(alpha: 0.08),
-                    blurRadius: 16,
-                    offset: const Offset(0, 8),
-                  ),
-                ],
-              ),
-              child: MiniGlassSurface(
-                theme: theme,
-                borderRadius: theme.radius.medium,
-                backgroundColor:
-                    theme.colors.background.withValues(alpha: 0.28),
-                border: null,
-                child: content,
-              ),
-            )
-          : DecoratedBox(
-              decoration: BoxDecoration(
-                color: theme.colors.background,
-                borderRadius: theme.radius.medium,
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color:
-                        theme.colors.foreground.withValues(alpha: 0.06),
-                    blurRadius: 14,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              child: content,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: theme.colors.background,
+          borderRadius: theme.radius.medium,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: theme.colors.foreground.withValues(alpha: 0.06),
+              blurRadius: 14,
+              offset: const Offset(0, 6),
             ),
+          ],
+        ),
+        child: content,
+      ),
     );
   }
 }
