@@ -287,7 +287,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           const MiniDivider(),
           MiniListItem(
             title: 'Open feedback demo',
-            subtitle: 'Dialog / ActionSheet / Snackbar / Loading',
+            subtitle: 'Dialog / Snackbar / Loading overlay',
             showArrow: true,
             onTap: () {
               Navigator.of(context)

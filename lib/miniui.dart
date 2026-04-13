@@ -22,7 +22,6 @@ export 'components/list/mini_list_item.dart';
 
 export 'components/feedback/mini_toast.dart';
 export 'components/feedback/mini_dialog.dart';
-export 'components/feedback/mini_action_sheet.dart';
 export 'components/feedback/mini_snackbar.dart';
 export 'components/feedback/mini_loading_overlay.dart';
 

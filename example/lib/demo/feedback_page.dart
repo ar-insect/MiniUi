@@ -77,31 +77,7 @@ class _MiniFeedbackDemoPageState extends State<MiniFeedbackDemoPage> {
             },
           ),
           SizedBox(height: theme.spacing.sm),
-          MiniButton(
-            label: 'Show ActionSheet',
-            variant: MiniButtonVariant.ghost,
-            onPressed: () {
-              MiniActionSheet.show(
-                context,
-                title: 'Actions',
-                actions: <MiniActionSheetAction>[
-                  MiniActionSheetAction(
-                    label: 'Copy',
-                    onPressed: () {
-                      MiniToast.show(context, 'Tapped Copy');
-                    },
-                  ),
-                  MiniActionSheetAction(
-                    label: 'Delete',
-                    destructive: true,
-                    onPressed: () {
-                      MiniToast.show(context, 'Tapped Delete');
-                    },
-                  ),
-                ],
-              );
-            },
-          ),
+          // ActionSheet demo removed; Snackbar and Loading are kept as examples.
           SizedBox(height: theme.spacing.sm),
           MiniButton(
             label: 'Show Snackbar',
