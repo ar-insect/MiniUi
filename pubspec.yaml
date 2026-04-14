@@ -6,9 +6,9 @@ version: 0.0.1
 environment:
   sdk: ^3.11.4
 
-homepage: https://github.com/ar-insect/MiniUi
-repository: https://github.com/ar-insect/MiniUi
-issue_tracker: https://github.com/ar-insect/MiniUi/issues
+homepage: https://github.com/ar-insect/miniui_component
+repository: https://github.com/ar-insect/miniui_component
+issue_tracker: https://github.com/ar-insect/miniui_component/issues
 
 dependencies:
   flutter:
