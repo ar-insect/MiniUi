@@ -51,14 +51,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  miniui: ^1.0.0
+  miniui_component: ^0.0.1
 ```
 
 ### Minimal example (no `material.dart`)
 
 ```dart
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 void main() {
   final controller = MiniThemeController();
@@ -294,7 +294,7 @@ Besides built‑in `light / dark / blue / red / festival`, you can define your o
 
 ```dart
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 const MiniTheme brandTheme = MiniTheme(
   name: 'brand',
@@ -335,7 +335,7 @@ With this:
 If your app needs finer spacing than `xs ~ xl` but you do not want to modify `MiniSpacingTokens`, you can wrap it on the app side:
 
 ```dart
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 class ExtendedSpacing {
   final MiniSpacingTokens core;
@@ -495,7 +495,7 @@ This decouples **size style** from **color style**: brand colors can change inde
 All components are exported via [`lib/miniui.dart`](lib/miniui.dart):
 
 ```dart
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 ```
 
 - Core
@@ -637,7 +637,7 @@ Once MiniUi is added as a dependency, you can integrate it like this:
 
 ```dart
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 void main() {
   final controller = MiniThemeController(initialTheme: MiniThemes.light);

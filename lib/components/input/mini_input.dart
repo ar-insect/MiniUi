@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Basic text input component with placeholder and keyboard type support.
 class MiniInput extends StatefulWidget {

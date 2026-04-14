@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Badge component that can be overlaid on the top-right of a child widget,
 /// supporting numeric badges and dot badges.

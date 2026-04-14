@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Tag component to display status text, supporting filled/outlined and
 /// optional close button styles.

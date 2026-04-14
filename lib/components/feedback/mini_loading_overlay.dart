@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 /// Full-screen loading overlay implemented with [Overlay].
 class MiniLoadingOverlay extends BaseComponent {

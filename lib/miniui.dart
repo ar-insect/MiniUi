@@ -1,5 +1,5 @@
 /// Public entry point for the MiniUi component library.
-library miniui;
+library miniui_component;
 
 export 'core/base/base_component.dart';
 export 'core/localization/mini_localizations.dart';

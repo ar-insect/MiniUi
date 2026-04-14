@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 class MiniCustomTokensPage extends StatefulWidget {
   static const String routeName = '/custom-tokens';
@@ -40,10 +40,17 @@ class _MiniCustomTokensPageState extends State<MiniCustomTokensPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: MiniText(
-            '‹ Back',
-            style: theme.typography.body.copyWith(
-              color: theme.colors.foreground,
+          child: SizedBox(
+            width: theme.spacing.lg * 1.8,
+            height: theme.spacing.lg * 1.8,
+            child: Center(
+              child: MiniText(
+                '‹',
+                style: theme.typography.title.copyWith(
+                  fontSize: 20,
+                  color: theme.colors.foreground,
+                ),
+              ),
             ),
           ),
         ),

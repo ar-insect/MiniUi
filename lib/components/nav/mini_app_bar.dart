@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Top app bar with optional leading widget, centered title and trailing actions.
 class MiniAppBar extends BaseComponent {

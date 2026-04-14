@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 import 'demo/custom_tokens_page.dart';
 import 'demo/home_page.dart';
 import 'demo/list_page.dart';

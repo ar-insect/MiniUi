@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 /// Snackbar component shown near the bottom of the screen, with an optional
 /// action button.

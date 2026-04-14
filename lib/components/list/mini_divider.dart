@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Thin divider used between list items.
 class MiniDivider extends BaseComponent {

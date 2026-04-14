@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/utils/tokens.dart';
+import 'package:miniui_component/core/utils/tokens.dart';
 
-export 'package:miniui/core/utils/tokens.dart';
+export 'package:miniui_component/core/utils/tokens.dart';
 
 /// Theme controller that stores the current [MiniTheme] and notifies listeners
 /// when it changes.

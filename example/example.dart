@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 void main() {
   final MiniThemeController controller = MiniThemeController();
@@ -68,4 +68,3 @@ class _MiniUiExampleAppState extends State<MiniUiExampleApp> {
     );
   }
 }
-

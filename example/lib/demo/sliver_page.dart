@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 class MiniSliverDemoPage extends StatelessWidget {
   static const String routeName = '/sliver-demo';
@@ -25,12 +25,18 @@ class MiniSliverDemoPage extends StatelessWidget {
                       behavior: HitTestBehavior.opaque,
                       onTap: () => Navigator.of(context).pop(),
                       child: Padding(
-                        padding:
-                            EdgeInsets.only(right: theme.spacing.sm),
-                        child: MiniText(
-                          '‹ Back',
-                          style: theme.typography.body.copyWith(
-                            color: theme.colors.foreground,
+                        padding: EdgeInsets.only(right: theme.spacing.sm),
+                        child: SizedBox(
+                          width: theme.spacing.lg * 1.8,
+                          height: theme.spacing.lg * 1.8,
+                          child: Center(
+                            child: MiniText(
+                              '‹',
+                              style: theme.typography.title.copyWith(
+                                fontSize: 20,
+                                color: theme.colors.foreground,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -70,4 +76,3 @@ class MiniSliverDemoPage extends StatelessWidget {
     );
   }
 }
-

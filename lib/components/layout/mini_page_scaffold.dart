@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/components/nav/mini_app_bar.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/components/nav/mini_app_bar.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// Page-level scaffold that handles safe areas, top app bar and bottom bar.
 class MiniPageScaffold extends BaseComponent {

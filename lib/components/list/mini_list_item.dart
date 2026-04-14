@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui_component/core/base/base_component.dart';
 
 /// List item component with optional leading icon, title, subtitle and trailing
 /// widget.
@@ -157,6 +157,7 @@ class _MiniListItemBodyState extends State<_MiniListItemBody> {
           child: Text(
             '›',
             style: theme.typography.body.copyWith(
+              fontSize: 18,
               color: theme.colors.foreground.withValues(alpha: 0.25),
             ),
           ),

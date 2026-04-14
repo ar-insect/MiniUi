@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:miniui/core/utils/tokens.dart';
+import 'package:miniui_component/core/utils/tokens.dart';
 
 void main() {
   test('MiniThemes.light has consistent spacing tokens', () {
@@ -19,4 +19,3 @@ void main() {
     expect(light.brightness, isNot(equals(dark.brightness)));
   });
 }
-

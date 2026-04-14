@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 class MiniTabViewDemoPage extends StatefulWidget {
   static const String routeName = '/tab-view-demo';
@@ -53,10 +53,17 @@ class _MiniTabViewDemoPageState extends State<MiniTabViewDemoPage> {
         leading: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => Navigator.of(context).pop(),
-          child: MiniText(
-            '‹ ${i18n.backLabel}',
-            style: theme.typography.body.copyWith(
-              color: theme.colors.foreground,
+          child: SizedBox(
+            width: theme.spacing.lg * 1.8,
+            height: theme.spacing.lg * 1.8,
+            child: Center(
+              child: MiniText(
+                '‹',
+                style: theme.typography.title.copyWith(
+                  fontSize: 20,
+                  color: theme.colors.foreground,
+                ),
+              ),
             ),
           ),
         ),

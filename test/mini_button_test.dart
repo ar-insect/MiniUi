@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 void main() {
   testWidgets('MiniButton renders label and responds to tap', (WidgetTester tester) async {
@@ -36,4 +36,3 @@ void main() {
     expect(tapped, isTrue);
   });
 }
-

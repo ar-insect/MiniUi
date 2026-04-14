@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 /// Empty-state component used when there is no data to show.
 class MiniEmpty extends BaseComponent {

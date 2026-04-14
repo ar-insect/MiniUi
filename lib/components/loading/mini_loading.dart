@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
-import 'package:miniui/core/painters/loading_painter.dart';
+import 'package:miniui_component/core/base/base_component.dart';
+import 'package:miniui_component/core/painters/loading_painter.dart';
 
 /// Spinning ring loading indicator rendered with a custom painter.
 class MiniLoading extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 /// Search bar with pill-shaped background, placeholder and clear button.
 class MiniSearchBar extends StatefulWidget {

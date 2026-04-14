@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 /// Generic bottom sheet container used to present arbitrary content
 /// from the bottom of the screen.

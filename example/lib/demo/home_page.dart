@@ -7,7 +7,7 @@ import 'custom_tokens_page.dart';
 import 'tab_view_page.dart';
 import 'form_page.dart';
 import 'sliver_page.dart';
-import 'package:miniui/miniui.dart';
+import 'package:miniui_component/miniui.dart';
 
 class MiniHomePage extends StatefulWidget {
   final MiniThemeController controller;
