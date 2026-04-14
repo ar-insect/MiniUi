@@ -4,6 +4,9 @@ import 'layout_page.dart';
 import 'tokens_page.dart';
 import 'feedback_page.dart';
 import 'custom_tokens_page.dart';
+import 'tab_view_page.dart';
+import 'form_page.dart';
+import 'sliver_page.dart';
 import 'package:miniui/miniui.dart';
 
 class MiniHomePage extends StatefulWidget {
@@ -26,6 +29,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
 
     return Container(
       color: theme.colors.background,
@@ -38,13 +42,13 @@ class _MiniHomePageState extends State<MiniHomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                _buildHeader(theme),
+                _buildHeader(theme, i18n),
                 const SizedBox(height: 16),
-                _buildComponentsCard(theme),
+                _buildComponentsCard(theme, i18n),
                 const SizedBox(height: 16),
-                _buildFormCard(theme),
+                _buildFormCard(theme, i18n),
                 const SizedBox(height: 16),
-                _buildListAndToastCard(theme),
+                _buildListAndToastCard(theme, i18n),
                 const SizedBox(height: 16),
                 const MiniEmpty(),
               ],
@@ -55,7 +59,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
     );
   }
 
-  Widget _buildHeader(MiniTheme theme) {
+  Widget _buildHeader(MiniTheme theme, MiniLocalizations i18n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -77,13 +81,16 @@ class _MiniHomePageState extends State<MiniHomePage> {
     );
   }
 
-  Widget _buildComponentsCard(MiniTheme theme) {
+  Widget _buildComponentsCard(
+    MiniTheme theme,
+    MiniLocalizations i18n,
+  ) {
     return MiniCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const MiniText(
-            'Component examples',
+          MiniText(
+            i18n.homeComponentExamplesTitle,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -91,25 +98,25 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const SizedBox(height: 12),
           MiniInput(
-            placeholder: 'Type something',
+            placeholder: i18n.homeInputPlaceholder,
             onChanged: (_) {},
           ),
           const SizedBox(height: 12),
           Row(
             children: <Widget>[
               MiniButton(
-                label: 'Primary',
+                label: i18n.primaryLabel,
                 onPressed: () {},
               ),
               const SizedBox(width: 12),
               MiniButton(
-                label: 'Ghost',
+                label: i18n.ghostLabel,
                 variant: MiniButtonVariant.ghost,
                 onPressed: () {},
               ),
               const SizedBox(width: 12),
               MiniButton(
-                label: 'Danger',
+                label: i18n.dangerLabel,
                 variant: MiniButtonVariant.danger,
                 onPressed: () {},
               ),
@@ -117,10 +124,10 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const SizedBox(height: 12),
           Row(
-            children: const <Widget>[
-              MiniTag(label: 'Tag'),
-              SizedBox(width: 8),
-              MiniTag(label: 'Status'),
+            children: <Widget>[
+              MiniTag(label: i18n.tagLabel),
+              const SizedBox(width: 8),
+              MiniTag(label: i18n.statusLabel),
             ],
           ),
           SizedBox(height: theme.spacing.sm),
@@ -155,13 +162,16 @@ class _MiniHomePageState extends State<MiniHomePage> {
     );
   }
 
-  Widget _buildFormCard(MiniTheme theme) {
+  Widget _buildFormCard(
+    MiniTheme theme,
+    MiniLocalizations i18n,
+  ) {
     return MiniCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const MiniText(
-            'Form examples',
+          MiniText(
+            i18n.homeFormExamplesTitle,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -170,7 +180,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           const SizedBox(height: 12),
           MiniCheckbox(
             value: _agreed,
-            label: 'I have read and agree to the terms',
+            label: i18n.homeAgreeTerms,
             onChanged: (bool v) {
               setState(() {
                 _agreed = v;
@@ -194,7 +204,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              const MiniText('Receive push notifications'),
+              MiniText(i18n.homeReceivePush),
               MiniSwitch(
                 value: _notificationsEnabled,
                 onChanged: (bool v) {
@@ -210,13 +220,16 @@ class _MiniHomePageState extends State<MiniHomePage> {
     );
   }
 
-  Widget _buildListAndToastCard(MiniTheme theme) {
+  Widget _buildListAndToastCard(
+    MiniTheme theme,
+    MiniLocalizations i18n,
+  ) {
     return MiniCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const MiniText(
-            'List & Toast examples',
+          MiniText(
+            i18n.homeListToastExamplesTitle,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -225,17 +238,17 @@ class _MiniHomePageState extends State<MiniHomePage> {
           const SizedBox(height: 8),
           const MiniDivider(),
           MiniListItem(
-            title: 'Account security',
-            subtitle: 'Password & device management',
-            trailing: const MiniTag(label: 'Recommended'),
+            title: i18n.homeAccountSecurityTitle,
+            subtitle: i18n.homeAccountSecuritySubtitle,
+            trailing: MiniTag(label: i18n.homeRecommendedTag),
             onTap: () {
-              MiniToast.show(context, 'Tapped Account security');
+              MiniToast.show(context, i18n.homeToastAccountSecurity);
             },
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Notifications',
-            subtitle: 'In-app messages & push',
+            title: i18n.homeNotificationsTitle,
+            subtitle: i18n.homeNotificationsSubtitle,
             trailing: MiniSwitch(
               value: _notificationsEnabled,
               onChanged: (bool v) {
@@ -245,21 +258,21 @@ class _MiniHomePageState extends State<MiniHomePage> {
               },
             ),
             onTap: () {
-              MiniToast.show(context, 'Tapped Notifications');
+              MiniToast.show(context, i18n.homeToastNotifications);
             },
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Show Toast',
-            subtitle: 'Show a lightweight message at the bottom',
+            title: i18n.homeShowToastTitle,
+            subtitle: i18n.homeShowToastSubtitle,
             showArrow: true,
             onTap: () {
-              MiniToast.show(context, 'This is a MiniToast message');
+              MiniToast.show(context, i18n.homeToastGeneric);
             },
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Open list demo',
+            title: i18n.homeOpenListDemo,
             subtitle: 'Navigate to full list demo',
             showArrow: true,
             onTap: () {
@@ -268,7 +281,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Open tokens demo',
+            title: i18n.homeOpenTokensDemo,
             subtitle: 'View color / spacing / radius / typography tokens',
             showArrow: true,
             onTap: () {
@@ -277,7 +290,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Open layout & navigation demo',
+            title: i18n.homeOpenLayoutDemo,
             subtitle: 'Show AppBar / TabBar / PageScaffold',
             showArrow: true,
             onTap: () {
@@ -286,7 +299,7 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Open feedback demo',
+            title: i18n.homeOpenFeedbackDemo,
             subtitle: 'Dialog / Snackbar / Loading overlay',
             showArrow: true,
             onTap: () {
@@ -296,11 +309,39 @@ class _MiniHomePageState extends State<MiniHomePage> {
           ),
           const MiniDivider(),
           MiniListItem(
-            title: 'Open custom appearance demo',
+            title: i18n.homeOpenCustomTokensDemo,
             subtitle: 'Adjust radius / typography / spacing dynamically',
             showArrow: true,
             onTap: () {
               Navigator.of(context).pushNamed(MiniCustomTokensPage.routeName);
+            },
+          ),
+          const MiniDivider(),
+          MiniListItem(
+            title: i18n.homeOpenTabViewDemo,
+            subtitle: 'MiniTabBar + PageView linkage',
+            showArrow: true,
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(MiniTabViewDemoPage.routeName);
+            },
+          ),
+          const MiniDivider(),
+          MiniListItem(
+            title: i18n.homeOpenFormDemo,
+            subtitle: 'Form + validation + MiniButton',
+            showArrow: true,
+            onTap: () {
+              Navigator.of(context).pushNamed(MiniFormDemoPage.routeName);
+            },
+          ),
+          const MiniDivider(),
+          MiniListItem(
+            title: i18n.homeOpenSliverDemo,
+            subtitle: 'CustomScrollView + SliverList',
+            showArrow: true,
+            onTap: () {
+              Navigator.of(context).pushNamed(MiniSliverDemoPage.routeName);
             },
           ),
         ],

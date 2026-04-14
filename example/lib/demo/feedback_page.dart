@@ -16,6 +16,7 @@ class _MiniFeedbackDemoPageState extends State<MiniFeedbackDemoPage> {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
 
     return MiniPageScaffold(
       appBar: MiniAppBar(
@@ -25,13 +26,13 @@ class _MiniFeedbackDemoPageState extends State<MiniFeedbackDemoPage> {
             Navigator.of(context).pop();
           },
           child: MiniText(
-            '‹ Back',
+            '‹ ${i18n.backLabel}',
             style: theme.typography.body.copyWith(
               color: theme.colors.foreground,
             ),
           ),
         ),
-        title: const MiniText('Feedback components'),
+        title: MiniText(i18n.feedbackDemoTitle),
         centerTitle: true,
       ),
       body: Container(
@@ -71,8 +72,6 @@ class _MiniFeedbackDemoPageState extends State<MiniFeedbackDemoPage> {
                 context,
                 title: 'MiniDialog',
                 message: 'This is a simple dialog example.',
-                confirmLabel: 'Confirm',
-                cancelLabel: 'Cancel',
               );
             },
           ),
@@ -113,7 +112,7 @@ class _MiniFeedbackDemoPageState extends State<MiniFeedbackDemoPage> {
                         SizedBox(
                           width: double.infinity,
                           child: MiniButton(
-                            label: 'Confirm',
+                            label: MiniLocalizations.of(context).confirmLabel,
                             onPressed: () {
                               Navigator.of(context).pop();
                             },

@@ -64,13 +64,31 @@ class MiniTabBar extends BaseComponent {
           : BorderSide.none,
     );
 
+    final Widget content = isBottom
+        ? row
+        : Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              row,
+              SizedBox(height: theme.spacing.xs),
+              _MiniTopTabIndicator(
+                itemCount: items.length,
+                currentIndex: currentIndex,
+                color: theme.colors.primary,
+                trackColor:
+                    theme.colors.foreground.withValues(alpha: 0.04),
+              ),
+            ],
+          );
+
     return Container(
       padding: padding,
       decoration: BoxDecoration(
         color: theme.colors.background,
         border: border,
       ),
-      child: row,
+      child: content,
     );
   }
 
@@ -105,11 +123,70 @@ class MiniTabBar extends BaseComponent {
             if (item.icon != null) SizedBox(height: theme.spacing.xs),
             MiniText(
               item.label,
-              style: theme.typography.small.copyWith(color: color),
+              style: theme.typography.small.copyWith(
+                color: color,
+                fontWeight:
+                    selected ? FontWeight.w600 : FontWeight.w400,
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _MiniTopTabIndicator extends StatelessWidget {
+  final int itemCount;
+  final int currentIndex;
+  final Color color;
+  final Color trackColor;
+
+  const _MiniTopTabIndicator({
+    required this.itemCount,
+    required this.currentIndex,
+    required this.color,
+    required this.trackColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final double totalWidth = constraints.maxWidth;
+        if (itemCount <= 0 || totalWidth <= 0) {
+          return const SizedBox.shrink();
+        }
+        final double tabWidth = totalWidth / itemCount;
+        final double indicatorWidth = tabWidth * 0.5;
+        final double left =
+            tabWidth * currentIndex + (tabWidth - indicatorWidth) / 2;
+
+        return SizedBox(
+          height: 3,
+          child: Stack(
+            children: <Widget>[
+              Positioned.fill(
+                child: ColoredBox(color: trackColor),
+              ),
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 220),
+                curve: Curves.easeOutCubic,
+                left: left,
+                width: indicatorWidth,
+                top: 0,
+                bottom: 0,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

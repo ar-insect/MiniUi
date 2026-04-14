@@ -9,6 +9,7 @@ class MiniListDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
 
     return Container(
       color: theme.colors.background,
@@ -28,7 +29,7 @@ class MiniListDemoPage extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(right: theme.spacing.sm),
                       child: MiniText(
-                        '‹ Back',
+                      '‹ ${i18n.backLabel}',
                         style: theme.typography.body.copyWith(
                           color: theme.colors.foreground,
                         ),
@@ -36,7 +37,7 @@ class MiniListDemoPage extends StatelessWidget {
                     ),
                   ),
                   MiniText(
-                    'List demo',
+                    i18n.listViewTitle,
                     style: theme.typography.title.copyWith(
                       color: theme.colors.foreground,
                     ),

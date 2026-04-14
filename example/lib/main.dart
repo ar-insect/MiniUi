@@ -8,6 +8,9 @@ import 'demo/list_page.dart';
 import 'demo/tokens_page.dart';
 import 'demo/layout_page.dart';
 import 'demo/feedback_page.dart';
+import 'demo/tab_view_page.dart';
+import 'demo/form_page.dart';
+import 'demo/sliver_page.dart';
 
 void main() {
   final MiniThemeController controller = MiniThemeController();
@@ -64,6 +67,24 @@ class _MiniUiAppState extends State<MiniUiApp> {
         child: WidgetsApp(
           color: theme.colors.background,
           debugShowCheckedModeBanner: false,
+          localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+            MiniLocalizations.delegate,
+          ],
+          supportedLocales: MiniLocalizations.supportedLocales,
+          localeListResolutionCallback:
+              (List<Locale>? locales, Iterable<Locale> supported) {
+            final Locale? device = locales != null && locales.isNotEmpty
+                ? locales.first
+                : null;
+            if (device == null) {
+              return const Locale('en');
+            }
+            final String code = device.languageCode.toLowerCase();
+            if (code == 'zh') {
+              return const Locale('zh');
+            }
+            return const Locale('en');
+          },
           onGenerateRoute: (RouteSettings settings) {
             Widget page;
             switch (settings.name) {
@@ -78,6 +99,15 @@ class _MiniUiAppState extends State<MiniUiApp> {
                 break;
               case MiniFeedbackDemoPage.routeName:
                 page = const MiniFeedbackDemoPage();
+                break;
+              case MiniTabViewDemoPage.routeName:
+                page = const MiniTabViewDemoPage();
+                break;
+              case MiniFormDemoPage.routeName:
+                page = const MiniFormDemoPage();
+                break;
+              case MiniSliverDemoPage.routeName:
+                page = const MiniSliverDemoPage();
                 break;
               case MiniCustomTokensPage.routeName:
                 page = MiniCustomTokensPage(

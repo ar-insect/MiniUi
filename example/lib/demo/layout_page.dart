@@ -17,6 +17,7 @@ class _MiniLayoutDemoPageState extends State<MiniLayoutDemoPage> {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
 
     return MiniPageScaffold(
       appBar: MiniAppBar(
@@ -26,13 +27,13 @@ class _MiniLayoutDemoPageState extends State<MiniLayoutDemoPage> {
             Navigator.of(context).pop();
           },
           child: MiniText(
-            '‹ Back',
+            '‹ ${i18n.backLabel}',
             style: theme.typography.body.copyWith(
               color: theme.colors.foreground,
             ),
           ),
         ),
-        title: const MiniText('Layout & navigation demo'),
+        title: MiniText(i18n.layoutDemoTitle),
         centerTitle: true,
       ),
       body: Container(

@@ -6,14 +6,14 @@ import 'package:miniui/miniui.dart';
 class MiniDialog extends BaseComponent {
   final String? title;
   final String message;
-  final String confirmLabel;
+  final String? confirmLabel;
   final String? cancelLabel;
 
   const MiniDialog({
     super.key,
     this.title,
     required this.message,
-    this.confirmLabel = 'Confirm',
+    this.confirmLabel,
     this.cancelLabel,
   });
 
@@ -25,8 +25,8 @@ class MiniDialog extends BaseComponent {
     BuildContext context, {
     String? title,
     required String message,
-    String confirmLabel = 'Confirm',
-    String? cancelLabel = 'Cancel',
+    String? confirmLabel,
+    String? cancelLabel,
   }) {
     return Navigator.of(context).push<bool>(
       PageRouteBuilder<bool>(
@@ -54,14 +54,18 @@ class MiniDialog extends BaseComponent {
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
+
+    final String resolvedConfirm = confirmLabel ?? i18n.confirmLabel;
+    final String? resolvedCancel = cancelLabel ?? i18n.cancelLabel;
 
     final List<Widget> actions = <Widget>[];
 
-    if (cancelLabel != null) {
+    if (resolvedCancel != null) {
       actions.add(
         Expanded(
           child: MiniButton(
-            label: cancelLabel!,
+            label: resolvedCancel,
             variant: MiniButtonVariant.ghost,
             onPressed: () {
               Navigator.of(context).pop(false);
@@ -74,7 +78,7 @@ class MiniDialog extends BaseComponent {
     actions.add(
       Expanded(
         child: MiniButton(
-          label: confirmLabel,
+          label: resolvedConfirm,
           onPressed: () {
             Navigator.of(context).pop(true);
           },

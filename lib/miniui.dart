@@ -2,6 +2,7 @@
 library miniui;
 
 export 'core/base/base_component.dart';
+export 'core/localization/mini_localizations.dart';
 
 export 'components/button/mini_button.dart';
 export 'components/card/mini_card.dart';

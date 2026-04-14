@@ -1,17 +1,17 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui/miniui.dart';
 
 /// Search bar with pill-shaped background, placeholder and clear button.
 class MiniSearchBar extends StatefulWidget {
   final String? initialValue;
   final ValueChanged<String>? onChanged;
-  final String placeholder;
+  final String? placeholder;
 
   const MiniSearchBar({
     super.key,
     this.initialValue,
     this.onChanged,
-    this.placeholder = 'Search',
+    this.placeholder,
   });
 
   @override
@@ -19,20 +19,40 @@ class MiniSearchBar extends StatefulWidget {
 }
 
 class _MiniSearchBarState extends State<MiniSearchBar> {
-  late final TextEditingController _controller =
-      TextEditingController(text: widget.initialValue);
-  late final FocusNode _focusNode = FocusNode();
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue);
+    _focusNode = FocusNode();
+    _focusNode.addListener(_handleChanged);
+    _controller.addListener(_handleChanged);
+  }
 
   @override
   void dispose() {
+    _focusNode.removeListener(_handleChanged);
+    _controller.removeListener(_handleChanged);
     _controller.dispose();
     _focusNode.dispose();
     super.dispose();
   }
 
+  void _handleChanged() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = MiniThemeProvider.of(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
+
+    final String placeholderText =
+        widget.placeholder ?? i18n.searchPlaceholder;
+    final bool showPlaceholder =
+        _controller.text.isEmpty && !_focusNode.hasFocus;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -72,17 +92,36 @@ class _MiniSearchBarState extends State<MiniSearchBar> {
             ),
             SizedBox(width: theme.spacing.sm),
             Expanded(
-              child: EditableText(
-                controller: _controller,
-                focusNode: _focusNode,
-                keyboardType: TextInputType.text,
-                style: theme.typography.body.copyWith(
-                  color: theme.colors.foreground,
-                ),
-                cursorColor: theme.colors.primary,
-                backgroundCursorColor: theme.colors.background,
-                selectionColor: theme.colors.primary.withValues(alpha: 0.2),
-                onChanged: widget.onChanged,
+              child: Stack(
+                alignment: Alignment.centerLeft,
+                children: <Widget>[
+                  EditableText(
+                    controller: _controller,
+                    focusNode: _focusNode,
+                    keyboardType: TextInputType.text,
+                    style: theme.typography.body.copyWith(
+                      color: theme.colors.foreground,
+                    ),
+                    cursorColor: theme.colors.primary,
+                    backgroundCursorColor: theme.colors.background,
+                    selectionColor:
+                        theme.colors.primary.withValues(alpha: 0.2),
+                    onChanged: (String value) {
+                      widget.onChanged?.call(value);
+                    },
+                  ),
+                  if (showPlaceholder)
+                    IgnorePointer(
+                      child: MiniText(
+                        placeholderText,
+                        style: theme.typography.body.copyWith(
+                          color: theme.colors.foreground.withValues(
+                            alpha: 0.4,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
             if (_controller.text.isNotEmpty)

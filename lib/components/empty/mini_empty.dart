@@ -1,20 +1,23 @@
 import 'package:flutter/widgets.dart';
-import 'package:miniui/core/base/base_component.dart';
+import 'package:miniui/miniui.dart';
 
 /// Empty-state component used when there is no data to show.
 class MiniEmpty extends BaseComponent {
-  final String message;
+  final String? message;
   final Widget? icon;
 
   const MiniEmpty({
     super.key,
-    this.message = 'No data',
+    this.message,
     this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
+
+    final String resolvedMessage = message ?? i18n.emptyMessage;
 
     return Center(
       child: Column(
@@ -64,7 +67,7 @@ class MiniEmpty extends BaseComponent {
             style: theme.typography.body.copyWith(
               color: theme.colors.foreground.withValues(alpha: 0.6),
             ),
-            child: Text(message),
+            child: Text(resolvedMessage),
           ),
         ],
       ),
