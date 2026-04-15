@@ -16,3 +16,6 @@
 - 新增 MiniBackButton 组件。
 - 新增 导航栏组件。
 - 优化其它组件的样式与性能。
+
+# 0.0.4
+- 更新README、增加 i18n / Localization。
