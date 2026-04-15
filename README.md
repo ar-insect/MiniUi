@@ -28,7 +28,9 @@ This repo 既包含组件实现，也包含一个完整的示例 App（在 `exam
 
 | Home & Theme | Profile 模版 | Grid & BottomNav |
 | ------------ | ------------ | ---------------- |
-| ![Home](docs/home.png) | ![Profile](docs/profile.png) | ![Grid](docs/grid.png) | ![Navigation](docs/navigation.png) |
+| ![Home](doc/home.png) | ![Profile](doc/profile.png) | ![Grid](doc/grid.png) |
+
+![Navigation](doc/navigation.png)
 
 ---
 
