@@ -1,12 +1,12 @@
-# MiniUi Component
+# MiniUi 组件库
 
 一个基于 Flutter 的 UI 组件库，不依赖 `material.dart`。
 
-This repo 既包含组件实现，也包含一个完整的示例 App（在 `example/` 目录），推荐直接跑 example 来体验所有组件和模版页。
+本仓库既包含组件实现，也包含一个完整的示例 App（在 `example/` 目录），推荐直接跑 example 来体验所有组件和模版页。
 
 ---
 
-## Features
+## 特性
 
 - **No Material dependency**
   - 仅依赖 `package:flutter/widgets.dart`
@@ -34,7 +34,7 @@ This repo 既包含组件实现，也包含一个完整的示例 App（在 `exam
 
 ---
 
-## Install
+## 安装
 
 `pubspec.yaml` 中添加依赖（已发布到 pub.dev 后）：
 
@@ -48,7 +48,7 @@ dependencies:
 
 ---
 
-## Quick Start（最小示例，无 `material.dart`）
+## 快速开始（最小示例，无 `material.dart`）
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -82,7 +82,7 @@ void main() {
 
 ---
 
-## Demos（示例 App）
+## 示例 App（Demos）
 
 示例 App 入口：[`example/lib/main.dart`](example/lib/main.dart)
 
@@ -110,7 +110,7 @@ flutter run -t example/lib/main.dart
 
 ---
 
-## Components Overview
+## 组件概览
 
 所有组件统一从 [`lib/miniui.dart`](lib/miniui.dart) 导出：
 
@@ -122,7 +122,7 @@ import 'package:miniui_component/miniui.dart';
 
 ---
 
-## i18n / Localization
+## 多语言（i18n）
 
 MiniUi 内置了一个简单的本地化层 [`MiniLocalizations`](lib/core/localization/mini_localizations.dart)，目前支持：
 
@@ -166,7 +166,7 @@ final MiniLocalizations i18n = MiniLocalizations.of(context);
 
 ---
 
-## Development
+## 开发与调试
 
 运行示例 App：
 

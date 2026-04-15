@@ -30,7 +30,7 @@ class MiniBackButton extends BaseComponent {
   Widget build(BuildContext context) {
     final MiniTheme theme = themeOf(context);
 
-    final double resolvedSize = size ?? theme.spacing.lg * 2.0;
+    final double resolvedSize = size ?? 48;
     final double resolvedIconSize = iconSize ?? 24;
     final Color resolvedColor = color ?? theme.colors.foreground;
 

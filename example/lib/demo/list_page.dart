@@ -1,10 +1,35 @@
 import 'package:flutter/widgets.dart';
 import 'package:miniui_component/miniui.dart';
 
-class MiniListDemoPage extends StatelessWidget {
+class MiniListDemoPage extends StatefulWidget {
   static const String routeName = '/list-demo';
 
   const MiniListDemoPage({super.key});
+
+  @override
+  State<MiniListDemoPage> createState() => _MiniListDemoPageState();
+}
+
+class _MiniListDemoPageState extends State<MiniListDemoPage> {
+  bool _refreshing = false;
+
+  Future<void> _handleRefresh() async {
+    if (_refreshing) {
+      return;
+    }
+    setState(() {
+      _refreshing = true;
+    });
+    await Future<void>.delayed(const Duration(milliseconds: 800));
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      _refreshing = false;
+    });
+    final MiniLocalizations i18n = MiniLocalizations.of(context);
+    MiniToast.show(context, i18n.listRefreshDone);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,25 +61,28 @@ class MiniListDemoPage extends StatelessWidget {
             ),
             const MiniDivider(),
             Expanded(
-              child: ListView.separated(
-                itemCount: 10,
-                separatorBuilder: (BuildContext context, int index) {
-                  return const MiniDivider();
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return MiniListItem(
-                    title: 'Item ${index + 1}',
-                    subtitle:
-                        'Description text to demonstrate MiniListItem layout.',
-                    trailing: const MiniTag(label: 'View'),
-                    onTap: () {
-                      MiniToast.show(
-                        context,
-                        'Tapped item ${index + 1}',
-                      );
-                    },
-                  );
-                },
+              child: MiniPullToRefresh(
+                onRefresh: _handleRefresh,
+                child: ListView.separated(
+                  itemCount: 10,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const MiniDivider();
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    return MiniListItem(
+                      title: 'Item ${index + 1}',
+                      subtitle:
+                          'Description text to demonstrate MiniListItem layout.',
+                      trailing: const MiniTag(label: 'View'),
+                      onTap: () {
+                        MiniToast.show(
+                          context,
+                          'Tapped item ${index + 1}',
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ],

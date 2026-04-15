@@ -57,11 +57,7 @@ class MiniTabBar extends BaseComponent {
               color: theme.colors.foreground.withValues(alpha: 0.06),
             )
           : BorderSide.none,
-      bottom: !isBottom
-          ? BorderSide(
-              color: theme.colors.foreground.withValues(alpha: 0.06),
-            )
-          : BorderSide.none,
+      bottom: BorderSide.none,
     );
 
     final Widget content = isBottom
@@ -166,9 +162,6 @@ class _MiniTopTabIndicator extends StatelessWidget {
           height: 3,
           child: Stack(
             children: <Widget>[
-              Positioned.fill(
-                child: ColoredBox(color: trackColor),
-              ),
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 220),
                 curve: Curves.easeOutCubic,

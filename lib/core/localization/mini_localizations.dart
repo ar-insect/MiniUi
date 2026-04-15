@@ -66,7 +66,7 @@ class MiniLocalizations {
   String get homeFormExamplesTitle =>
       _isZh ? '表单示例' : 'Form examples';
   String get homeListToastExamplesTitle =>
-      _isZh ? '列表与 Toast 示例' : 'List & Toast examples';
+      _isZh ? '示例' : 'Examples';
   String get primaryLabel => _isZh ? '主按钮' : 'Primary';
   String get ghostLabel => _isZh ? '幽灵按钮' : 'Ghost';
   String get dangerLabel => _isZh ? '危险' : 'Danger';
@@ -100,6 +100,14 @@ class MiniLocalizations {
       _isZh ? '点击了消息通知' : 'Tapped Notifications';
   String get homeToastGeneric =>
       _isZh ? '这是一条 MiniToast 提示' : 'This is a MiniToast message';
+  String get pullToRefresh =>
+      _isZh ? '下拉刷新' : 'Pull to refresh';
+  String get releaseToRefresh =>
+      _isZh ? '松手刷新' : 'Release to refresh';
+  String get refreshing =>
+      _isZh ? '刷新中…' : 'Refreshing…';
+  String get listRefreshDone =>
+      _isZh ? '刷新完成' : 'Refresh complete';
 }
 
 class _MiniLocalizationsDelegate
